@@ -12,7 +12,7 @@ import JuegosdelhambreDDI.CafeteriaAPP.repository.ComidaRepository;
 public class ComidaService {
 
     @Autowired
-    private ComidaRepository comidaRepository;
+    ComidaRepository comidaRepository;
 
     public List<Comida> getAllComidas() {
         return comidaRepository.getAllComidas();

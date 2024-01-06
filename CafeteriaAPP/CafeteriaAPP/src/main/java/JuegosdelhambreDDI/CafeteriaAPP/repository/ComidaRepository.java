@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import JuegosdelhambreDDI.CafeteriaAPP.model.Comida;
 import JuegosdelhambreDDI.CafeteriaAPP.model.ComidaRowMapper;
 
-
+@Repository
 public class ComidaRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
