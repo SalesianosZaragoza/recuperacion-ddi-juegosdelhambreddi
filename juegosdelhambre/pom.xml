@@ -5,7 +5,11 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+<<<<<<< Updated upstream:juegosdelhambre/pom.xml
 		<version>2.6.3</version>
+=======
+		<version>3.2.0</version>
+>>>>>>> Stashed changes:CafeteriaAPP/CafeteriaAPP/pom.xml
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>examenrecu.example.juegosdelhambre</groupId>
@@ -21,6 +25,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>8.0</version> 
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
