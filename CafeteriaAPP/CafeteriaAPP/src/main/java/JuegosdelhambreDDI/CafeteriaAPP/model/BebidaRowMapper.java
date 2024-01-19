@@ -12,7 +12,7 @@ public class BebidaRowMapper implements RowMapper<Bebida> {
     public Bebida mapRow(ResultSet rs, int rowNum) throws SQLException {
         Bebida bebida = new Bebida();
         bebida.setId(rs.getInt("id"));
-        bebida.setNombre(rs.getString("nombre"));
+        bebida.setCantidad(rs.getString("nombre"));
         // bebida.setTipo(rs.getString("tipo"));
         // bebida.setPrecio(rs.getDouble("precio"));
         return bebida;

@@ -41,7 +41,7 @@ public class BebidasService {
     public List<Bebida> searchBebida(String userInput) {
         List<Bebida> lista = bebidas.searchByNombre(userInput);
         for (Bebida bebida : lista) {
-            System.out.println(bebida.getNombre() + " Precio: " + bebida.getPrecio());
+            System.out.println(bebida.getCantidad() + " Precio: " + bebida.getPrecio());
         }
         return lista;
     }

@@ -2,6 +2,9 @@ package JuegosdelhambreDDI.CafeteriaAPP.service;
 
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +15,7 @@ import JuegosdelhambreDDI.CafeteriaAPP.repository.CafeRepository;
 @Service
 public class CafeService {
    @Autowired
-   CafeRepository cafes;
+   CafeRepository cafeRepository;
 
     public String obtenerCafe() {
         // Aquí puedes agregar la lógica para obtener un cafe
@@ -20,19 +23,24 @@ public class CafeService {
     }
 
     public List<Cafe> getAllCafes() {
-        return cafes.getAllCafes();
+        return  StreamSupport.stream(cafeRepository.findAll().spliterator(), false)
+        .collect(Collectors.toList());
     }
 
-    public Cafe getCafeById(int id) {
-        return cafes.getCafeById(id);
+    public Optional<Cafe> getCafeById(int id) {
+        return cafeRepository.findById(id);
     }
 
-    public void addCafe(Cafe cafe) {
-        cafes.addCafe(cafe);
+
+    public Cafe addCafe(Cafe cafe) {
+        return cafeRepository.save(cafe);
+
+		// return cafeRepository.findById(cafe.getId());
+	
     }
 
-    public void updateCafe(Cafe cafe) {
-        cafes.updateCafe(cafe);
+    public Cafe updateCafe(Cafe cafe) {
+        return cafeRepository.save(cafe);
     }
 
     public void deleteCafe(int id) {

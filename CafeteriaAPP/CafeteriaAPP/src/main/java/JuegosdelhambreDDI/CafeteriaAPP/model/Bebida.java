@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 
 
 
@@ -18,12 +17,6 @@ public class Bebida {
 
     @Id
     @Column(nullable = false, updatable = false)
-    @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
-            allocationSize = 1,
-            initialValue = 10000
-    )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "primary_sequence"
@@ -33,17 +26,17 @@ public class Bebida {
 
 // Bebida Borradorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
     @Column(nullable = false)
-    private String nombre;
+    private String cantidad;
 
     @Column(nullable = false)
     private double precio;
 
-    public String getNombre() {
-        return nombre;
+    public String getCantidad() {
+        return cantidad;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
     }
 
     public double getPrecio() {
