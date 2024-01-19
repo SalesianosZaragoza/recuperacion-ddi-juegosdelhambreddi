@@ -1,7 +1,5 @@
 package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -44,18 +42,18 @@ public class RegistrationController {
         return "index"; 
     }
 
-    // localhost:8080/Cafe
-    @RequestMapping("/Cafe")
-    public String requestMethodName(Cafe cafe, Model model) {
-        List<Cafe> lista = cafeService.addCafe(cafe);
-        model.addAttribute("listaCafe", lista);
+    // // localhost:8080/Cafe
+    // @RequestMapping("/Cafe")
+    // public String requestMethodName(Cafe cafe, Model model) {
+    //     Cafe cafeCreado = cafeService.addCafe(cafe);
+    //     model.addAttribute("cafeCreado", cafeCreado);
 
-        return "Cafe";
-    }
+    //     return "Cafe";
+    // }
     
 	@RequestMapping("/listarCafe")
 	public String listarCafe(Model model) {
-		List<Cafe> lista = cafeService.getAllCafes();
+		Iterable<Cafe> lista = cafeService.getAllCafes();
 
 		model.addAttribute("cafes", lista);
 

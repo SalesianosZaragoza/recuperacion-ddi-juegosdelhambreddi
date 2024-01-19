@@ -1,33 +1,38 @@
 package JuegosdelhambreDDI.CafeteriaAPP.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 
 @Entity
 public class Cafe {
 
     @Id
-    @Column(nullable = false, updatable = false)
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
-    )
+    @Column
+    @GeneratedValue
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(name = "NOMPRODUCTO")
     private String nomProducto;
 
-    @Column(nullable = false)
+    @Column
     private Integer cantidad;
 
-    @Column(nullable = false)
+    @Column
     private Double precio;
 
+    public Cafe() {
+    }
+
+    public Cafe(Integer id, String nomProducto, Integer cantidad, Double precio) {
+        this.id = id;
+        this.nomProducto = nomProducto;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
 
     public Integer getId() {
         return id;

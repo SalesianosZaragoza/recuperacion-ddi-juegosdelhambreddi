@@ -14,5 +14,7 @@ public interface CafeRepository extends CrudRepository<Cafe, Integer>{
 
     public List<Cafe> findBynomProducto(String nomProducto) ;
 
+    // Optional<Cafe> findByNomProducto(String nomProducto)
+
 }
 

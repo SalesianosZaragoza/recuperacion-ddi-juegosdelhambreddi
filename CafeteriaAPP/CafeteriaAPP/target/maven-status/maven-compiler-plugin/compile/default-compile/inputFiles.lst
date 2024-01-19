@@ -26,7 +26,6 @@
 /mnt/c/Users/David/eclipse-workspace/recuperacion-ddi-juegosdelhambreddi/CafeteriaAPP/CafeteriaAPP/src/main/java/JuegosdelhambreDDI/CafeteriaAPP/controllers/RegistrationController.java
 /mnt/c/Users/David/eclipse-workspace/recuperacion-ddi-juegosdelhambreddi/CafeteriaAPP/CafeteriaAPP/src/main/java/JuegosdelhambreDDI/CafeteriaAPP/model/Cliente.java
 /mnt/c/Users/David/eclipse-workspace/recuperacion-ddi-juegosdelhambreddi/CafeteriaAPP/CafeteriaAPP/src/main/java/JuegosdelhambreDDI/CafeteriaAPP/repository/BebidaRepository.java
-/mnt/c/Users/David/eclipse-workspace/recuperacion-ddi-juegosdelhambreddi/CafeteriaAPP/CafeteriaAPP/src/main/java/JuegosdelhambreDDI/CafeteriaAPP/controllers/ExampleController.java
 /mnt/c/Users/David/eclipse-workspace/recuperacion-ddi-juegosdelhambreddi/CafeteriaAPP/CafeteriaAPP/src/main/java/JuegosdelhambreDDI/CafeteriaAPP/repository/ClienteRepository.java
 /mnt/c/Users/David/eclipse-workspace/recuperacion-ddi-juegosdelhambreddi/CafeteriaAPP/CafeteriaAPP/src/main/java/JuegosdelhambreDDI/CafeteriaAPP/repository/ComidaRepository.java
 /mnt/c/Users/David/eclipse-workspace/recuperacion-ddi-juegosdelhambreddi/CafeteriaAPP/CafeteriaAPP/src/main/java/JuegosdelhambreDDI/CafeteriaAPP/controllers/database/MySQLConnection.java
