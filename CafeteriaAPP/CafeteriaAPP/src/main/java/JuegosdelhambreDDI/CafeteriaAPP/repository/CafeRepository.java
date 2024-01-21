@@ -12,7 +12,7 @@ import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
 @Repository
 public interface CafeRepository extends CrudRepository<Cafe, Integer>{
 
-    public List<Cafe> findBynomProducto(String nomProducto) ;
+    public List<Cafe> findBynomcafe(String nomcafe) ;
 
     // Optional<Cafe> findByNomProducto(String nomProducto)
 

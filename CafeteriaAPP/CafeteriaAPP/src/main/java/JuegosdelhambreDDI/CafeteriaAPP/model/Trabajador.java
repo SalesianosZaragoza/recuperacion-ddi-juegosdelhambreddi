@@ -18,8 +18,8 @@ public class Trabajador {
     )
     private Integer id;
 
-    @Column(nullable = false)
-    private String nombre;
+    @Column(name = "nombre")
+    private String nomTrabajador;
 
     @Column(nullable = false)
     private String apellidos;
@@ -34,11 +34,11 @@ public class Trabajador {
     }
 
     public String  getNombre() {
-        return nombre;
+        return nomTrabajador;
     }
 
     public void setNombre(String  nombre) {
-        this.nombre = nombre;
+        this.nomTrabajador = nombre;
     }
 
     public String  getApellidos() {

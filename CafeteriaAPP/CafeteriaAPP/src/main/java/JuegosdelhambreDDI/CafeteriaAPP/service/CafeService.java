@@ -50,7 +50,7 @@ public class CafeService {
 
     public List<Cafe> searchCafe(String userInput) {
 
-        return cafeRepository.findBynomProducto(userInput);
+        return cafeRepository.findBynomcafe(userInput);
     }
 
 

@@ -34,9 +34,9 @@ public class PedidoService {
         pedidoRepository.deleteById(id);
     }
 
-    public List<Pedido> searchPedido(String userInput) {
+    public List<Pedido> searchPedido(int userInput) {
 
-        return pedidoRepository.findBynomProducto(userInput);
+        return pedidoRepository.findBynumPedido(userInput);
     }
     
 }

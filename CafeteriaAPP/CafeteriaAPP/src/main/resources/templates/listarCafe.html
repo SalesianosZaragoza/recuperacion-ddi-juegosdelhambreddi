@@ -17,10 +17,11 @@
 		<tbody>
 			<tr th:each="cafe: ${cafes}">
 				<td th:text="${cafe.id}"/>
-				<td th:text="${cafe.nomProducto}"/>
+				<td th:text="${cafe.nomcafe}"/>
 				<td th:text="${cafe.precio}"/>
 				<td th:text="${cafe.cantidad}"/>
 				<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td>
+				<td><a th:href="@{insertCafe}">Insertar Cafe</a></td>
 				<!-- <td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td> -->
 			</tr>
 		</tbody>

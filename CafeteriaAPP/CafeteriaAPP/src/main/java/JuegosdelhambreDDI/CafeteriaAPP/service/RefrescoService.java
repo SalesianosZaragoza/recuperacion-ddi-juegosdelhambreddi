@@ -37,7 +37,7 @@ public class RefrescoService {
     
     public List<Refresco> searchRefresco(String userInput) {
     
-        return refrescoRepository.findBynomProducto(userInput); 
+        return refrescoRepository.findBynomRefresco(userInput); 
     }
 
     

@@ -23,7 +23,7 @@ public class Consumicion {
 private Integer id;
 
 @Column(nullable = false)
-private String nombre;
+private String nombreConsumicion;
 
 @Column(nullable = false)
 private double precio;
@@ -31,11 +31,11 @@ private double precio;
 
 
 public String getNombre() {
-    return nombre;
+    return nombreConsumicion;
 }
 
 public void setNombre(String nombre) {
-    this.nombre = nombre;
+    this.nombreConsumicion = nombre;
 }
 
 public double getPrecio() {

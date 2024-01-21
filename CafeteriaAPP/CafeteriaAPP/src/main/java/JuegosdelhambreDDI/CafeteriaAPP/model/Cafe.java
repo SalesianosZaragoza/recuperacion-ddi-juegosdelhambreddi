@@ -15,8 +15,8 @@ public class Cafe {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "NOMPRODUCTO")
-    private String nomProducto;
+    @Column(name = "NOMCAFE")
+    private String nomcafe;
 
     @Column
     private Integer cantidad;
@@ -27,9 +27,9 @@ public class Cafe {
     public Cafe() {
     }
 
-    public Cafe(Integer id, String nomProducto, Integer cantidad, Double precio) {
+    public Cafe(Integer id, String nomCafe, Integer cantidad, Double precio) {
         this.id = id;
-        this.nomProducto = nomProducto;
+        this.nomcafe = nomCafe;
         this.cantidad = cantidad;
         this.precio = precio;
     }
@@ -42,12 +42,12 @@ public class Cafe {
         this.id = id;
     }
 
-    public String getNomProducto() {
-        return nomProducto;
+    public String getNomcafe() {
+        return nomcafe;
     }
 
-    public void setNomProducto(final String nomProducto) {
-        this.nomProducto = nomProducto;
+    public void setNomcafe(final String nomCafe) {
+        this.nomcafe = nomCafe;
     }
 
     public Integer getCantidad() {

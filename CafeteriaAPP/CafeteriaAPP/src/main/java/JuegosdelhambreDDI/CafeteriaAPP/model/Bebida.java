@@ -24,7 +24,6 @@ public class Bebida {
     private Integer id;
 
 
-// Bebida Borradorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
     @Column(nullable = false)
     private String cantidad;
 
@@ -46,7 +45,6 @@ public class Bebida {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-// Bebida Borradorrrrr FFFFFFIIIIIIIIIIIIIIIIIINNNNNNNNNN
 
 
     @ManyToOne(fetch = FetchType.LAZY)

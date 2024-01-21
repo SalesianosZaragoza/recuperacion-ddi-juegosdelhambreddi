@@ -10,7 +10,7 @@ CREATE TABLE Bebida
 CREATE TABLE Cafe
 (
   id          INT          NULL    ,
-  nomProducto VARCHAR(255) NOT NULL,
+  nomcafe VARCHAR(255) NOT NULL,
   cantidad    INT          NOT NULL,
   precio      FLOAT        NOT NULL,
   PRIMARY KEY (id)
@@ -19,7 +19,7 @@ CREATE TABLE Cafe
 CREATE TABLE Cliente
 (
   id      INT          NULL    ,
-  nombre  VARCHAR(255) NOT NULL,
+  nomCliente  VARCHAR(255) NOT NULL,
   logeado BOOLEAN      NOT NULL,
   PRIMARY KEY (id)
 );
@@ -27,7 +27,7 @@ CREATE TABLE Cliente
 CREATE TABLE Comida
 (
   idComida    INT          NULL    ,
-  nomProducto VARCHAR(255) NOT NULL,
+  nomComida VARCHAR(255) NOT NULL,
   cantidad    INT          NOT NULL,
   precio      FLOAT        NOT NULL,
   PRIMARY KEY (idComida)
@@ -53,7 +53,7 @@ CREATE TABLE Pedido
 CREATE TABLE Refresco
 (
   id          INT          NULL    ,
-  nomProducto VARCHAR(255) NOT NULL,
+  nomRefresco VARCHAR(255) NOT NULL,
   cantidad    INT          NOT NULL,
   precio      FLOAT        NOT NULL,
   PRIMARY KEY (id)

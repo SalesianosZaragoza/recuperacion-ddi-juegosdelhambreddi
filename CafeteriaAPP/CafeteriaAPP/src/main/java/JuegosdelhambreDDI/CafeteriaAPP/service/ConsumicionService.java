@@ -33,10 +33,10 @@ public class ConsumicionService {
         consumicionRepository.deleteById(id);
     }
 
-    public List<Consumicion> searchConsumicion(String userInput) {
+    // public List<Consumicion> searchConsumicion(String userInput) {
 
-        return consumicionRepository.findBynomProducto(userInput);
-    }
+    //     return consumicionRepository.findBynomProducto(userInput);
+    // }
     
 
 

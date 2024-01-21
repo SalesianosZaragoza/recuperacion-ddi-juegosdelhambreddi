@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Bebida;
+import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
+import JuegosdelhambreDDI.CafeteriaAPP.model.Refresco;
 import JuegosdelhambreDDI.CafeteriaAPP.repository.BebidaRepository;
 
 @Service
@@ -39,11 +41,11 @@ public class BebidasService {
         bebidaRepository.deleteById(id);
     }
 
-    public List<Bebida> searchBebidaByCafe(String userInput) {
+    public List<Bebida> searchBebidaByCafe(Cafe userInput) {
         return bebidaRepository.findBycafe(userInput);
     }
 
-    public List<Bebida> searchBebidaByRefersco(String userInput) {
+    public List<Bebida> searchBebidaByRefersco(Refresco userInput) {
         return bebidaRepository.findByrefresco(userInput);
     }
 }

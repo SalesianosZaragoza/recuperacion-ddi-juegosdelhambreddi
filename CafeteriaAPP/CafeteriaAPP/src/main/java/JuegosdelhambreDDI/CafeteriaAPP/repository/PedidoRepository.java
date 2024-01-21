@@ -1,18 +1,17 @@
 package JuegosdelhambreDDI.CafeteriaAPP.repository;
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Pedido;
 
 
-import java.util.List;
-
-
 
 @Repository
 public interface PedidoRepository extends CrudRepository<Pedido, Integer> {
 
-    public List<Pedido> findBynomProducto(String nomProducto) ;
+    public List<Pedido> findBynumPedido(int numPedido) ;
 
     // Optional<Cafe> findByNomProducto(String nomProducto)
     

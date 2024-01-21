@@ -20,7 +20,7 @@ public class Refresco {
     private Integer id;
 
     @Column(nullable = false)
-    private String nomProducto;
+    private String nomRefresco;
 
     @Column(nullable = false)
     private Integer cantidad;
@@ -37,11 +37,11 @@ public class Refresco {
     }
 
     public String getNomProducto() {
-        return nomProducto;
+        return nomRefresco;
     }
 
     public void setNomProducto(final String nomProducto) {
-        this.nomProducto = nomProducto;
+        this.nomRefresco = nomProducto;
     }
 
     public Integer getCantidad() {

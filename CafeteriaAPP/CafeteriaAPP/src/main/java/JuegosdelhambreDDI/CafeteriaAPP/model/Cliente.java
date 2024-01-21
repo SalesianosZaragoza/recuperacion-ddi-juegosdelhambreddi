@@ -21,7 +21,7 @@ public class Cliente {
     private Integer id;
 
     @Column(nullable = false)
-    private String nombre;
+    private String nomCliente;
 
     @Column(nullable = false)
     private String apellido;
@@ -45,12 +45,12 @@ public class Cliente {
         this.logeado = logeado;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getnomCliente() {
+        return nomCliente;
     }
 
-    public void setNombre(final String nombre) {
-        this.nombre = nombre;
+    public void setnomCliente(final String nomCliente) {
+        this.nomCliente = nomCliente;
     }
 
     public String getApellido() {

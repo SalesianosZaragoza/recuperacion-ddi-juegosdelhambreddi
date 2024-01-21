@@ -21,7 +21,7 @@ public class Comida {
         private Integer id;
 
         @Column(nullable = false)
-        private String nomProducto;
+        private String nomComida;
 
         @Column(nullable = false)
         private Integer cantidad;
@@ -42,11 +42,11 @@ public class Comida {
         }
 
         public String getNomProducto() {
-            return nomProducto;
+            return nomComida;
         }
 
         public void setNomProducto(String nomProducto) {
-            this.nomProducto = nomProducto;
+            this.nomComida = nomProducto;
         }
 
         public Integer getCantidad() {
