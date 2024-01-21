@@ -2,6 +2,7 @@ package JuegosdelhambreDDI.CafeteriaAPP.service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,38 +13,35 @@ import JuegosdelhambreDDI.CafeteriaAPP.repository.ClienteRepository;
 @Service
 public class ClientesService {
     @Autowired
-    ClienteRepository clientes;
+    ClienteRepository clienteRepository;
 
     public String obtenerCliente() {
         return "Cliente";
     }
 
-    public List<Cliente> getAllClientes() {
-        return clientes.getAllClientes();
+    public Iterable<Cliente> getAllClientes() {
+        return clienteRepository.findAll();
     }
 
-    public Cliente getClienteById(int id) {
-        return clientes.getClienteById(id);
+    public Optional<Cliente> getClienteById(int id) {
+        return clienteRepository.findById(id);
     }
 
-    public void addCliente(Cliente cliente) {
-        clientes.addCliente(cliente);
+    public Cliente addCliente(Cliente cliente) {
+         return clienteRepository.save(cliente);
     }
 
-    public void updateCliente(Cliente cliente) {
-        clientes.updateCliente(cliente);
+    public Cliente updateCliente(Cliente cliente) {
+        return clienteRepository.save(cliente);
     }
 
     public void deleteCliente(int id) {
-        clientes.deleteCliente(id);
+        clienteRepository.deleteById(id);
     }
 
     public List<Cliente> searchCliente(String userInput) {
-        List<Cliente> lista = clientes.searchByNombre(userInput);
-        for (Cliente cliente : lista) {
-            System.out.println(cliente.getNombre() + " Precio: " + cliente.getApellido());
-        }
-        return lista;
+
+        return clienteRepository.findBynomCliente(userInput);
     }
 
 
