@@ -39,8 +39,11 @@ public class BebidasService {
         bebidaRepository.deleteById(id);
     }
 
-    public List<Bebida> searchBebida(String userInput) {
+    public List<Bebida> searchBebidaByCafe(String userInput) {
+        return bebidaRepository.findBycafe(userInput);
+    }
 
-        return bebidaRepository.findBynomProducto(userInput);
+    public List<Bebida> searchBebidaByRefersco(String userInput) {
+        return bebidaRepository.findByrefresco(userInput);
     }
 }

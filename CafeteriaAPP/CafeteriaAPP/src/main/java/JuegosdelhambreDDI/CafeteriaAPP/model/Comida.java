@@ -1,14 +1,10 @@
 package JuegosdelhambreDDI.CafeteriaAPP.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 
 
@@ -18,12 +14,6 @@ public class Comida {
     
         @Id
         @Column(nullable = false, updatable = false)
-        @SequenceGenerator(
-                name = "primary_sequence",
-                sequenceName = "primary_sequence",
-                allocationSize = 1,
-                initialValue = 10000
-        )
         @GeneratedValue(
                 strategy = GenerationType.SEQUENCE,
                 generator = "primary_sequence"
@@ -39,9 +29,9 @@ public class Comida {
         @Column(nullable = false)
         private Double precio;
 
-         @OneToMany(fetch = FetchType.LAZY)
-         @JoinColumn(name = "consumicion_id")
-         private Consumicion consumicion;
+        //@ManyToOne(fetch = FetchType.LAZY)
+        //@JoinColumn(name = "consumicion_id")
+        //private Consumicion consumicion;
 
         public Integer getId() {
             return id;
@@ -76,6 +66,14 @@ public class Comida {
         }
 
         //hacer el metodo para la relacion con las consumiciones
+
+    // public Consumicion getConsumicion() {
+    //     return consumicion;
+    // }
+
+    // public void setConsumicion(Consumicion consumicion) {
+    //     this.consumicion = consumicion;
+    // }
 
 
 }

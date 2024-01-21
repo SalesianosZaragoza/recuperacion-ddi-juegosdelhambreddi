@@ -16,7 +16,7 @@ public class RegistrationController {
 	// @Autowired // usa esta interfaz
 	// DBConnection db;
 
-	@Autowired
+	@Autowired	// Se puede quitar si no se usa
 	JdbcTemplate jdbcTemplate;
 
 	@Autowired
