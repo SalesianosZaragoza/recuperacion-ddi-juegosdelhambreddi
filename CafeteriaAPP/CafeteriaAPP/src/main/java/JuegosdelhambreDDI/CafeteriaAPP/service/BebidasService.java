@@ -1,6 +1,7 @@
 package JuegosdelhambreDDI.CafeteriaAPP.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,38 +12,35 @@ import JuegosdelhambreDDI.CafeteriaAPP.repository.BebidaRepository;
 @Service
 public class BebidasService {
     @Autowired
-    BebidaRepository bebidas; 
+    BebidaRepository bebidaRepository; 
 
     public String obtenerBebida() {
         // Aquí puedes agregar la lógica para obtener una bebida
         return "Coca-Cola";
     }
     
-    public List<Bebida> getAllBebidas() {
-        return bebidas.getAllBebidas();
+    public Iterable<Bebida> getAllBebidas() {
+        return bebidaRepository.findAll();
     }
 
-    public Bebida getBebidaById(int id) {
-        return bebidas.getBebidaById(id);
+    public Optional<Bebida> getBebidaById(int id) {
+        return bebidaRepository.findById(id);
     }
 
-    public void addBebida(Bebida bebida) {
-        bebidas.addBebida(bebida);
+    public Bebida addBebida(Bebida bebida) {
+        return bebidaRepository.save(bebida);
     }
 
-    public void updateBebida(Bebida bebida) {
-        bebidas.updateBebida(bebida);
+    public Bebida updateBebida(Bebida bebida) {
+        return bebidaRepository.save(bebida);
     }
 
     public void deleteBebida(int id) {
-        bebidas.deleteBebida(id);
+        bebidaRepository.deleteById(id);
     }
 
     public List<Bebida> searchBebida(String userInput) {
-        List<Bebida> lista = bebidas.searchByNombre(userInput);
-        for (Bebida bebida : lista) {
-            System.out.println(bebida.getCantidad() + " Precio: " + bebida.getPrecio());
-        }
-        return lista;
+
+        return bebidaRepository.findBynomProducto(userInput);
     }
 }

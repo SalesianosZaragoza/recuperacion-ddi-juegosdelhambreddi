@@ -1,6 +1,7 @@
 package JuegosdelhambreDDI.CafeteriaAPP.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +15,15 @@ public class ComidaService {
     @Autowired
     ComidaRepository comidaRepository;
 
-    public List<Comida> getAllComidas() {
-        return comidaRepository.getAllComidas();
+    public Iterable<Comida> getAllComidas() {
+        return comidaRepository.findAll();
     }
 
-    public Comida getComidaById(Long id) {
-        return comidaRepository.getComidaById(id);
+    public Optional<Comida> getComidaById(int id) {
+        return comidaRepository.findById(id);
     }
 
-    public Comida saveComida(Comida comida) {
-        return comidaRepository.updateComida(comida);
-    }
-
-    public void deleteComida(Long id) {
-        comidaRepository.deleteComida(id);
+    public void deleteComida(int id) {
+        comidaRepository.deleteById(id);
     }
 }
