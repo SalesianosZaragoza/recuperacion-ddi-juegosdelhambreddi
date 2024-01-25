@@ -48,11 +48,11 @@ public class Bebida {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cafe_id")
+    @JoinColumn(name = "cafe_id")// , nullable = true
     private Cafe cafe;
-
+    
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "refresco_id")
+    @JoinColumn(name = "refresco_id")// , nullable = true
     private Refresco refresco;
 
 

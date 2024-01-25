@@ -19,7 +19,7 @@ public class Refresco {
     )
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(name = "NOMREFRESCO")
     private String nomRefresco;
 
     @Column(nullable = false)
