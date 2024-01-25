@@ -9,14 +9,12 @@
 </head>
 <body>
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
-		<th>ID</th>
 		<th>Nombre</th>
 		<th>Precio</th>
 		<th>Cantidad</th>
 		<th colspan="2">Opciones</th>
 		<tbody>
 			<tr th:each="refresco: ${refrescos}">
-				<td th:text="${refresco.id}"/>
 				<td th:text="${refresco.nomRefresco}"/>
 				<td th:text="${refresco.precio}"/>
 				<td th:text="${refresco.cantidad}"/>
