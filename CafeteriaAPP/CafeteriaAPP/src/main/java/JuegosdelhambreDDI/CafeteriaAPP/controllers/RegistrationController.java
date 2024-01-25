@@ -55,7 +55,7 @@ public class RegistrationController {
 	public String insertCafeForm(Model model) {
 
 		model.addAttribute("cafeCreado", new Cafe());
-		return "CafeForm";
+		return "cafe/CafeForm";
 	}
 
 
@@ -67,7 +67,7 @@ public class RegistrationController {
 		
         model.addAttribute("cafes", lista);
 
-        return "listarCafe";
+        return "cafe/listarCafe";
     }
     
 	@RequestMapping("/listarCafe")
@@ -76,7 +76,7 @@ public class RegistrationController {
 
 		model.addAttribute("cafes", lista);
 
-		return "listarCafe";
+		return "cafe/listarCafe";
 	}
 
 }
