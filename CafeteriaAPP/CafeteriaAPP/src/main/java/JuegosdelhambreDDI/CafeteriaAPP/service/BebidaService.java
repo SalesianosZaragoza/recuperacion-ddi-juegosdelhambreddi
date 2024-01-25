@@ -12,7 +12,7 @@ import JuegosdelhambreDDI.CafeteriaAPP.model.Refresco;
 import JuegosdelhambreDDI.CafeteriaAPP.repository.BebidaRepository;
 
 @Service
-public class BebidasService {
+public class BebidaService {
     @Autowired
     BebidaRepository bebidaRepository; 
 
