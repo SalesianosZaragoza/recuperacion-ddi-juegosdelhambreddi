@@ -60,8 +60,8 @@ public class RegistrationController {
 
 
 
-    @RequestMapping("/Cafe")
-    public String requestMethodName(Cafe cafeCreado, Model model) {
+    @RequestMapping("/crearCafe")
+    public String crearCafe(Cafe cafeCreado, Model model) {
 		Cafe cafe2 = cafeService.addCafe(cafeCreado);
 		List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
 		
