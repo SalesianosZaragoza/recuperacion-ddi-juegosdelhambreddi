@@ -36,12 +36,12 @@ public class Refresco {
         this.id = id;
     }
 
-    public String getNomProducto() {
+    public String getNomRefresco() {
         return nomRefresco;
     }
 
-    public void setNomProducto(final String nomProducto) {
-        this.nomRefresco = nomProducto;
+    public void setNomRefresco(final String nomRefresco) {
+        this.nomRefresco = nomRefresco;
     }
 
     public Integer getCantidad() {

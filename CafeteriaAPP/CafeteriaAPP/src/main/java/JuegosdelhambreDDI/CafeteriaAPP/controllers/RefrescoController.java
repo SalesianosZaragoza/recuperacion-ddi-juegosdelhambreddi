@@ -26,7 +26,7 @@ public class RefrescoController {
 	public String insertRefrescoForm(Model model) {
 
 		model.addAttribute("refresconuevo", new Refresco());
-		return "refresco/RefrescoForm";
+		return "refresco/resfrescoForm";
 	}
 
 
@@ -37,7 +37,7 @@ public class RefrescoController {
 		
         model.addAttribute("refrescos", lista);
 
-        return "refresco/crearRefresco";
+        return "refresco/listarRefresco";
     }
     
 	@RequestMapping("/listarRefresco")
