@@ -26,4 +26,8 @@ public class ComidaService {
     public void deleteComida(int id) {
         comidaRepository.deleteById(id);
     }
+
+    public Comida addComida(Comida comida) {
+        return comidaRepository.save(comida);
+    }
 }
