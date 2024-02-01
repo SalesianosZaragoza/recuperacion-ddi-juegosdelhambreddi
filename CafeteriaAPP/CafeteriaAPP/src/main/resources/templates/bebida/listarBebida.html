@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyneleaf.org">
+<head>
+<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<style>
+</style>
+<meta charset="UTF-8">
+<title>Los Cafes</title>
+</head>
+<body>
+	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
+		<th>Nombre</th>
+		<th>Precio</th>
+		<th>Cantidad</th>
+		<th>Cafe</th>
+		<!-- <th>Refresco</th> -->
+		<th colspan="2">Opciones</th>
+		<tbody>
+			<tr th:each="bebida: ${bebidas}">
+				<td th:text="${bebida.nomBebida}"/>
+				<td th:text="${bebida.precio}"/>
+				<td th:text="${bebida.cantidad}"/>
+				<td th:text="${bebida.cafe}"/>
+				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
+				<td><a th:href="@{insertbebida}">Insertar bebida</a></td>
+				<td><a th:href="@{'/deletebebida/'+${bebida.id}}">Delete</a></td>
+			</tr>
+		</tbody>
+		<br>
+		<a href="/../">Volver al indice</a>
+		<br>
+	</table>
+</body>
+</html>

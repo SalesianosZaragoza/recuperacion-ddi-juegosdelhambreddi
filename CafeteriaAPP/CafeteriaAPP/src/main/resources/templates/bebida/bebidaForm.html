@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyneleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert Refresco</title>
+</head>
+<body>
+	<form th:action="@{/crearBebida}" th:object="${bebidaNueva}">
+		<label for="id" style="display: none;">ID:</label>
+		<input type="number" id="id"  th:field="*{id}" style="display: none;"><br><br>
+		<label for="cafe">CAFES:</label>
+
+		
+		<select id="cafe" th:field="*{cafe}">
+			<option th:each="cafe: ${cafes}" th:value="${cafe.id}" th:text="${cafe.nomCafe}"></option>
+		</select><br><br>
+		<label for="refresco">REFRESCOS:</label>
+		<select id="refresco" th:field="*{refresco}">
+			<option th:each="refresco: ${refrescos}" th:value="${refresco.id}" th:text="${refresco.nomRefresco}"></option>
+		</select><br><br>
+
+		<label for="precio">Precio:</label>
+		<input type="number" id="precio"  th:field="*{precio}"><br><br>
+		<label for="precio">Cantidad:</label>
+		<input type="number" id="cantidad"  th:field="*{cantidad}"><br><br>
+		<input type="submit" value="Insertar">
+		
+	</form>
+</body>
+</html>
