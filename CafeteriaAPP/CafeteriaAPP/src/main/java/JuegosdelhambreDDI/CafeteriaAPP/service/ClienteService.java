@@ -11,7 +11,7 @@ import JuegosdelhambreDDI.CafeteriaAPP.model.Cliente;
 import JuegosdelhambreDDI.CafeteriaAPP.repository.ClienteRepository;
 
 @Service
-public class ClientesService {
+public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
