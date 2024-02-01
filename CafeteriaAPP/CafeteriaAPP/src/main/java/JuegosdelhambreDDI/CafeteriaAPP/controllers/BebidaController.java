@@ -1,8 +1,6 @@
 package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -11,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Bebida;
 import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
+import JuegosdelhambreDDI.CafeteriaAPP.model.Refresco;
 import JuegosdelhambreDDI.CafeteriaAPP.service.BebidaService;
 import JuegosdelhambreDDI.CafeteriaAPP.service.CafeService;
+import JuegosdelhambreDDI.CafeteriaAPP.service.RefrescoService;
 
 
 @Controller
@@ -27,22 +27,25 @@ public class BebidaController {
 	@Autowired
 	CafeService cafeService ;
 
+	@Autowired
+	RefrescoService refrescoService;
 
     @RequestMapping("/insertBebida")
 	public String insertBebidaForm(Model model) {
 
 		model.addAttribute("bebidaNueva", new Bebida());
+		Iterable<Cafe> lista = cafeService.getAllCafes();
+		model.addAttribute("cafes", lista);
+		Iterable<Refresco> listaRefresco = refrescoService.getAllRefrescos();
+		model.addAttribute("refrescos", listaRefresco);
 		return "bebida/bebidaForm";
 	}
 
 	@RequestMapping("/crearBebida")
-    public String crearBebida(Cafe cafeCreado, Model model) {
-		Cafe cafe2 = cafeService.addCafe(cafeCreado);
-		List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
-		// Iterable<Cafe> listaCafes = cafeService.getAllCafes();
-        model.addAttribute("cafes", lista);
-
-        return "cafe/listarCafe";
+    public String crearBebida(Bebida bebidaCreada, Model model) {
+		Bebida bebida = bebidaService.addBebida(bebidaCreada);
+		model.addAttribute("bebidaNueva", bebida);
+		return this.listarBebida(model);
     }
 
 	@RequestMapping("/listarBebida")

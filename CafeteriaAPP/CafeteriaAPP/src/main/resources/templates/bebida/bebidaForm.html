@@ -10,7 +10,7 @@
 		<input type="number" id="id"  th:field="*{id}" style="display: none;"><br><br>
 		<label for="cafe">CAFES:</label>
 		<select id="cafe" th:field="*{cafe}">
-			<option th:each="cafe: ${cafes}" th:value="${cafe.id}" th:text="${cafe.nomCafe}"></option>
+			<option th:each="cafe: ${cafes}" th:value="${cafe.id}" th:text="${cafe.nomcafe}"></option>
 		</select><br><br>
 		<label for="refresco">REFRESCOS:</label>
 		<select id="refresco" th:field="*{refresco}">

@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import JuegosdelhambreDDI.CafeteriaAPP.service.CafeService;
+
 
 @Controller
 public class RegistrationController {
@@ -16,7 +18,8 @@ public class RegistrationController {
 	@Autowired	// Se puede quitar si no se usa
 	JdbcTemplate jdbcTemplate;
 
-
+	@Autowired
+	CafeService cafeService;
 
 
 	// localhost:8080/
@@ -44,7 +47,7 @@ public class RegistrationController {
         return "Register"; 
     }
 
-
+	
 
 }
 

@@ -9,20 +9,24 @@
 </head>
 <body>
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
-		<th>Nombre</th>
-		<th>Precio</th>
-		<th>Cantidad</th>
-		<th>Cafe</th>
-		<!-- <th>Refresco</th> -->
-		<th colspan="2">Opciones</th>
+		<thead >
+			<th>Nombre</th>
+			<th>Precio</th>
+			<th>Cantidad</th>
+			<th>Cafe</th>
+			<th>Refresco</th>
+			<!-- <th>Refresco</th> -->
+			<th colspan="4">Opciones</th>
+		</thead>
 		<tbody>
 			<tr th:each="bebida: ${bebidas}">
-				<td th:text="${bebida.nomBebida}"/>
+				<td th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? bebida.refresco.nomRefresco : bebida.cafe.nomcafe}"/>
 				<td th:text="${bebida.precio}"/>
 				<td th:text="${bebida.cantidad}"/>
-				<td th:text="${bebida.cafe}"/>
+				<td th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? ' ' : bebida.cafe.nomcafe}"/>
+				<td th:text="${ #strings.equals(bebida.refresco.nomRefresco, 'nulo') ? ' ' : bebida.refresco.nomRefresco}"/>
 				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
-				<td><a th:href="@{insertbebida}">Insertar bebida</a></td>
+				<td><a th:href="@{insertBebida}">Insertar bebida</a></td>
 				<td><a th:href="@{'/deletebebida/'+${bebida.id}}">Delete</a></td>
 			</tr>
 		</tbody>
