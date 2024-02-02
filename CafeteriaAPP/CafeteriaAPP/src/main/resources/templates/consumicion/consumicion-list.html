@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyneleaf.org">
+<head>
+<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<style>
+</style>
+<meta charset="UTF-8">
+<title>Los Cafes</title>
+</head>
+<body>
+	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
+		<thead >
+			<th>Nombre</th>
+			<th>Precio</th>
+			<th>Bebida</th>
+			<th>Comida</th>
+			<!-- <th>Refresco</th> -->
+			<th colspan="4">Opciones</th>
+		</thead>
+		<tbody>
+			<tr th:each="consumicion: ${consumiciones}">
+				<td th:text="${consumicion.nombreConsumicion}"/>
+				<td th:text="${consumicion.precio}"/>
+				<td th:text="${ #strings.equals(consumicion.bebida.cafe.nomcafe, 'nulo') ? consumicion.bebida.refresco.nomRefresco : consumicion.bebida.cafe.nomcafe}"/>
+				<td th:text="${ #strings.equals(consumicion.comida.nomComida, 'nulo') ? ' ' : consumicion.comida.nomComida}"/>
+				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
+				<td><a th:href="@{insertConsumicion}">Insertar Consumicion</a></td>
+				<td><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}">Delete</a></td>
+			</tr>
+		</tbody>
+		<br>
+		<a href="/../">Volver al indice</a>
+		<br>
+	</table>
+</body>
+</html>

@@ -13,7 +13,7 @@ public class ComidaRowMapper implements RowMapper<Comida>{
         
         Comida comida = new Comida();
         comida.setId(rs.getInt("id"));
-        comida.setNomProducto(rs.getString("nomProducto"));
+        comida.setNomComida(rs.getString("nomProducto"));
         comida.setCantidad(rs.getInt("cantidad"));
         comida.setPrecio(rs.getDouble("precio"));
         return comida;

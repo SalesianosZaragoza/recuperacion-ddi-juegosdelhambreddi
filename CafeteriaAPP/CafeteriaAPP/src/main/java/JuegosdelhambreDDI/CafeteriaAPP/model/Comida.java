@@ -41,11 +41,11 @@ public class Comida {
             this.id = id;
         }
 
-        public String getNomProducto() {
+        public String getNomComida() {
             return nomComida;
         }
 
-        public void setNomProducto(String nomProducto) {
+        public void setNomComida(String nomProducto) {
             this.nomComida = nomProducto;
         }
 

@@ -14,7 +14,7 @@ public class ConsumicionRowMapper implements RowMapper<Consumicion>{
         
         Consumicion consumicion = new Consumicion();
         consumicion.setId(rs.getInt("id"));
-        consumicion.setNombre(rs.getString("nombre"));
+        consumicion.setNombreConsumicion(rs.getString("nombre"));
         consumicion.setPrecio(rs.getDouble("precio"));
         return consumicion;
     }

@@ -19,7 +19,6 @@ public class Consumicion {
         strategy = GenerationType.SEQUENCE,
         generator = "primary_sequence"
 )
-
 private Integer id;
 
 @Column(nullable = false)
@@ -30,11 +29,11 @@ private double precio;
 
 
 
-public String getNombre() {
+public String getNombreConsumicion() {
     return nombreConsumicion;
 }
 
-public void setNombre(String nombre) {
+public void setNombreConsumicion(String nombre) {
     this.nombreConsumicion = nombre;
 }
 
