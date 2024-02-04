@@ -14,10 +14,11 @@
 		</select><br><br>
 		<label for="bebida">Bebida:</label>
 		<select id="bebida" th:field="*{bebida}">
-			<option th:each="bebida: ${bebidas}" th:value="${ #strings.equals(bebida?.cafe?.nomcafe, 'nulo') ? bebida?.refresco?.nomRefresco : bebida?.cafe?.nomcafe ?: 'valor_predeterminado'}"
+			<option th:each="bebida: ${bebidas}" th:value="${bebida.id}" 
 				th:text="${ #strings.equals(bebida?.cafe?.nomcafe, 'nulo') ? bebida?.refresco?.nomRefresco : bebida?.cafe?.nomcafe ?: 'valor_predeterminado'}"></option>
 		</select><br><br>
 
+		<!-- "${ #strings.equals(bebida?.cafe?.nomcafe, 'nulo') ? bebida?.refresco?.nomRefresco : bebida?.cafe?.nomcafe ?: 'valor_predeterminado'}" -->
 		<!-- ${consumicion?.cantidadBebida == 0 ? consumicion?.bebida?.refresco?.cantidadRefresco : consumicion?.bebida?.cafe?.cantidadCafe ?: 0} -->
 
 
