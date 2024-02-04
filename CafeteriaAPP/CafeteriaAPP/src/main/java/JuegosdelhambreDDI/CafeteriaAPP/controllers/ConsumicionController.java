@@ -42,18 +42,43 @@ public class ConsumicionController {
         Consumicion consumicion = new Consumicion();
         Iterable<Bebida> bebidas = bebidaService.getAllBebidas();
         Iterable<Comida> comidas = comidaService.getAllComidas();
-        model.addAttribute("consumicion", consumicion);
+        model.addAttribute("consumicionNueva", consumicion);
         model.addAttribute("bebidas", bebidas);
         model.addAttribute("comidas", comidas);
-        return "consumicion-form";
+        return "consumicion/consumicion-form";
     }
 
     @RequestMapping("/save")
-    public String saveConsumicion(@ModelAttribute("consumicion") Consumicion consumicion) {
-        String nombreConsumicion = consumicion.getBebida().getCafe().getNomcafe()+ " - " + consumicion.getBebida().getRefresco().getNomRefresco() + " - " + consumicion.getComida().getNomComida();
+    public String saveConsumicion(@ModelAttribute("consumicionNueva") Consumicion consumicion, Model model) {
+        String nombreConsumicion = this.getNombreConsumicion(
+                consumicion.getBebida().getCafe().getNomcafe(), 
+                consumicion.getBebida().getRefresco().getNomRefresco(), 
+                consumicion.getComida().getNomComida()
+            ); 
         consumicion.setNombreConsumicion(nombreConsumicion);
+        double precioTotal = consumicion.getBebida().getPrecio() + consumicion.getComida().getPrecio(); //+ consumicion.getComida().getPrecio();
+        consumicion.setPrecio(precioTotal);
         consumicionService.addConsumicion(consumicion);
-        return "redirect:/consumicion";
+        
+        return this.getAllConsumiciones(model);
+    }
+
+    private String getNombreConsumicion(String cafe, String refresco, String comida) {
+        String nombreConsumicion = "";
+        String separador = "";
+        //consumicion.getBebida().getCafe().getNomcafe();//+ " - " + consumicion.getBebida().getRefresco().getNomRefresco() + " - " + 
+        if ( ( !cafe.isEmpty() ) && ( !cafe.equals("nulo") ) ){
+            nombreConsumicion = cafe;
+            separador = " - ";
+        }
+        if ( ( !refresco.isEmpty() ) && ( !refresco.equals("nulo") ) ){
+            nombreConsumicion = nombreConsumicion + separador + refresco;
+            separador = " - ";
+        }
+        if ( ( !comida.isEmpty() ) && ( !comida.equals("nulo") ) )
+            nombreConsumicion = nombreConsumicion + separador + comida;
+
+        return nombreConsumicion;
     }
 
     @RequestMapping("/edit/{id}")
@@ -64,7 +89,7 @@ public class ConsumicionController {
         model.addAttribute("consumicion", consumicion);
         model.addAttribute("bebidas", bebidas);
         model.addAttribute("comidas", comidas);
-        return "consumicion-form";
+        return "consumicion/consumicion-form";
     }
 
     @RequestMapping("/delete/{id}")
@@ -72,4 +97,13 @@ public class ConsumicionController {
         consumicionService.deleteConsumicion(id);
         return "redirect:/consumicion";
     }
+
+
+
+
+
+
+
+    
+
 }

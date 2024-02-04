@@ -77,7 +77,7 @@ public void setId(Integer id) {
         return comida;
     }   
 
-    public void setComidaIdComida(Comida comida) {
+    public void setComida(Comida comida) {
         this.comida = comida;
     } 
 

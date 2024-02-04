@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyneleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert Comida</title>
+</head>
+<body>
+	<form th:action="@{crearComidaNueva}" th:object="${comidaNueva}" >
+		<label for="id" style="display: none;">ID:</label>
+		<input type="number" id="id"  th:field="*{id}" style="display: none;"><br><br>
+		<label for="nomComida">Nombre de la Comida:</label>
+		<input type="text" id="nomComida"  th:field="*{nomComida}"><br><br>
+		<label for="cantidad">Cantidad:</label>
+		<input type="number" id="cantidad"  th:field="*{cantidad}"><br><br>
+		<label for="precio">Precio:</label>
+		<input type="number" id="precio"  th:field="*{precio}"><br><br>
+		
+		<input type="submit" value="Insertar">
+		
+	</form>
+</body>
+</html>

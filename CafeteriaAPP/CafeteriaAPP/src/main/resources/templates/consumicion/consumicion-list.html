@@ -5,7 +5,7 @@
 <style>
 </style>
 <meta charset="UTF-8">
-<title>Los Cafes</title>
+<title>Las Consumiciones</title>
 </head>
 <body>
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
@@ -22,9 +22,9 @@
 				<td th:text="${consumicion.nombreConsumicion}"/>
 				<td th:text="${consumicion.precio}"/>
 				<td th:text="${ #strings.equals(consumicion.bebida.cafe.nomcafe, 'nulo') ? consumicion.bebida.refresco.nomRefresco : consumicion.bebida.cafe.nomcafe}"/>
-				<td th:text="${ #strings.equals(consumicion.comida.nomComida, 'nulo') ? ' ' : consumicion.comida.nomComida}"/>
+				<td th:text="${ #strings.equals(consumicion.comida.nomComida, 'nulo') ? 'Sin Comida' : consumicion.comida.nomComida}"/>
 				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
-				<td><a th:href="@{insertConsumicion}">Insertar Consumicion</a></td>
+				<td><a th:href="@{/consumicion/add}">Insertar Consumicion</a></td>
 				<td><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}">Delete</a></td>
 			</tr>
 		</tbody>
