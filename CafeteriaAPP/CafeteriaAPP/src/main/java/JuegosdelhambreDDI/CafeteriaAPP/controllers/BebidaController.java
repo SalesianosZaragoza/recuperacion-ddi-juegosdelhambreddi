@@ -43,6 +43,10 @@ public class BebidaController {
 
 	@RequestMapping("/crearBebida")
     public String crearBebida(Bebida bebidaCreada, Model model) {
+		if(!"nulo".equals(bebidaCreada.getCafe().getNomcafe()) && !"nulo".equals(bebidaCreada.getRefresco().getNomRefresco())) {
+			System.out.println("Se ha seleccionado cafe y refresco");
+			return this.insertBebidaForm(model);
+		}
 		Bebida bebida = bebidaService.addBebida(bebidaCreada);
 		model.addAttribute("bebidaNueva", bebida);
 		return this.listarBebida(model);

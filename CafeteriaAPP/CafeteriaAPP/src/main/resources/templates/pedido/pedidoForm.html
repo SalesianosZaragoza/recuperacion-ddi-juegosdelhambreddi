@@ -5,15 +5,24 @@
 <title>Insert Refresco</title>
 </head>
 <body>
-	<form th:action="@{/crearRefresco}" th:object="${refresconuevo}">
-		<label for="id">ID:</label>
-		<input type="number" id="id"  th:field="*{id}"><br><br>
-		<label for="nombre">Nombre:</label>
-		<input type="text" id="nomRefresco"  th:field="*{nomRefresco}"><br><br>
-		<label for="precio">Precio:</label>
-		<input type="number" id="precio"  th:field="*{precio}"><br><br>
-		<label for="precio">Cantidad:</label>
-		<input type="number" id="cantidad"  th:field="*{cantidad}"><br><br>
+	<form th:action="@{/crearPedido}" th:object="${pedidoNuevo}">
+		<label for="id" style="display: none;">ID(Numero del Pedido):</label>
+		<input type="number" id="id"  th:field="*{numPedido}" style="display: none;"><br><br>
+		<label for="trabajador">Trabajador:</label>
+		<select id="trabajador" th:field="*{trabajador}">
+			<option th:each="trabajador: ${trabajadores}" th:value="${trabajador.id}" 
+				th:text="${trabajador.nombre}"></option>
+		</select><br><br>
+		<label for="usuario">Usuario:</label>
+		<select id="usuario" th:field="*{usuario}">
+			<option th:each="usuario: ${usuarios}" th:value="${usuario.id}" 
+				th:text="${usuario.nombre}"></option>
+		</select><br><br>
+		<label for="consumicion">Consumicion:</label>
+		<select id="consumicion" th:field="*{consumicion}">
+			<option th:each="consumicion: ${consumiciones}" th:value="${consumicion.id}" 
+				th:text="${consumicion.nombreConsumicion}"></option>
+		</select><br><br>
 		<input type="submit" value="Insertar">
 		
 	</form>

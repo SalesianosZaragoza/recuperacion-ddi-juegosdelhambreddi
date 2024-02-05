@@ -1,23 +1,42 @@
 package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import JuegosdelhambreDDI.CafeteriaAPP.model.Consumicion;
 import JuegosdelhambreDDI.CafeteriaAPP.model.Pedido;
+import JuegosdelhambreDDI.CafeteriaAPP.model.Trabajador;
+import JuegosdelhambreDDI.CafeteriaAPP.model.Usuario;
+import JuegosdelhambreDDI.CafeteriaAPP.service.ConsumicionService;
 import JuegosdelhambreDDI.CafeteriaAPP.service.PedidoService;
+import JuegosdelhambreDDI.CafeteriaAPP.service.TrabajadorService;
+import JuegosdelhambreDDI.CafeteriaAPP.service.UsuarioService;
 
 
 @Controller
 public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
+    @Autowired
+    private TrabajadorService trabajadorService;
+    @Autowired
+    private UsuarioService usuarioService;
+    @Autowired
+    private ConsumicionService consumicionService;
         
             
     @RequestMapping("/insertPedido")
     public String insertPedidoForm(Model model) {
-
+        List<Trabajador> trabajadores = trabajadorService.getAllTrabajador();
+        Iterable<Usuario> usuarios = usuarioService.getAllUsuario();
+        Iterable<Consumicion> consumiciones = consumicionService.getAllConsumiciones();
+        model.addAttribute("trabajadores", trabajadores);
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("consumiciones", consumiciones);
         model.addAttribute("pedidoNuevo", new Pedido());
         return "pedido/pedidoForm";
     }

@@ -64,7 +64,7 @@ public class ConsumicionController {
     }
 
     private String getNombreConsumicion(String cafe, String refresco, String comida) {
-        String nombreConsumicion = "Sin Nombre";
+        String nombreConsumicion = "";
         String separador = "";
         //consumicion.getBebida().getCafe().getNomcafe();//+ " - " + consumicion.getBebida().getRefresco().getNomRefresco() + " - " + 
         if ( ( !cafe.isEmpty() ) && ( !cafe.equals("nulo") ) ){
@@ -75,9 +75,10 @@ public class ConsumicionController {
             nombreConsumicion = nombreConsumicion + separador + refresco;
             separador = " - ";
         }
-        if ( ( !comida.isEmpty() ) && ( !comida.equals("nulo") ) )
+        if ( ( !comida.isEmpty() ) && ( !comida.equals("nulo") ) ){
             nombreConsumicion = nombreConsumicion + separador + comida;
-
+        }else if ( nombreConsumicion.equals("") )
+            nombreConsumicion = "Sin Nombre";
         return nombreConsumicion;
     }
 
