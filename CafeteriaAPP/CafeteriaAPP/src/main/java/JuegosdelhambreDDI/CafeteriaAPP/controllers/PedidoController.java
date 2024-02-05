@@ -44,7 +44,7 @@ public class PedidoController {
 
     @RequestMapping("/crearPedido")
     public String crearPedido(Pedido pedidoNuevo, Model model) {
-        pedidoNuevo.setNumPedido(pedidoNuevo.getConsumicion().getId());
+        // pedidoNuevo.setNumPedido(pedidoNuevo.getConsumicion());
         Pedido pedido = pedidoService.addPedido(pedidoNuevo);
         return this.listarPedido(model);
     }

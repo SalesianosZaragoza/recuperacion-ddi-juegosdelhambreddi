@@ -1,5 +1,7 @@
 package JuegosdelhambreDDI.CafeteriaAPP.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -8,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -30,9 +33,9 @@ public class Pedido {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "consumicion_id")
-    private Consumicion consumicion;
+    private List<Consumicion> consumicion;
 
 
     public Usuario getUsuario() {
@@ -56,15 +59,16 @@ public class Pedido {
         return trabajador;
     }
 
-    public Consumicion getConsumicion() {
-        return consumicion;
-    }
-
+    
     public void setTrabajador(Trabajador trabajador) {
         this.trabajador = trabajador;
     }
+    
+    public List<Consumicion> getConsumicion() {
+        return this.consumicion;
+    }
 
-    public void setConsumicion(Consumicion consumicion) {
+    public void setConsumicion(List<Consumicion> consumicion) {
         this.consumicion = consumicion;
     }
 

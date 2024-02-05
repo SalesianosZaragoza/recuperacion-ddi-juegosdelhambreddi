@@ -1,10 +1,13 @@
 package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
@@ -26,7 +29,7 @@ public class CafeController {
 
     @RequestMapping("/crearCafe")
     public String crearCafe(Cafe cafeCreado, Model model) {
-		cafeService.addCafe(cafeCreado);
+		Cafe cafe = cafeService.addCafe(cafeCreado);
 		List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
 		
         model.addAttribute("cafes", lista);
@@ -42,4 +45,31 @@ public class CafeController {
 
 		return "cafe/listarCafe";
 	}
+
+	@GetMapping("/mostrar-cafe")
+    public String mostrarCafes(Model model) {
+
+        String rutaCarpetaImagenes = "src/main/resources/static/ImagenesCafes/";
+		List<String> nombresImagenes = new ArrayList<>();
+
+		File carpetaImagenes = new File(rutaCarpetaImagenes);
+        File[] archivos = carpetaImagenes.listFiles();
+
+		if (archivos != null) {
+            for (File archivo : archivos) {
+                nombresImagenes.add(archivo.getName());
+            }
+        }
+		model.addAttribute("nombresImagenes", nombresImagenes);
+
+		
+		Iterable<Cafe> lista = cafeService.getAllCafes();
+		model.addAttribute("cafes", lista);
+		
+		return "cafe/listarCafe";
+
+    }
+
+
+
 }

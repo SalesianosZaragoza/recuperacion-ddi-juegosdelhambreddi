@@ -9,17 +9,24 @@
 </head>
 <body>
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
-		<th>ID</th>
-		<th>Nombre</th>
-		<th>Precio</th>
-		<th>Cantidad</th>
-		<th colspan="2">Opciones</th>
+		<thead>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Precio</th>
+			<th>Cantidad</th>
+			<th colspan="2">Opciones</th>
+		</thead>
 		<tbody>
 			<tr th:each="cafe: ${cafes}">
 				<td th:text="${cafe.id}"/>
 				<td th:text="${cafe.nomcafe}"/>
 				<td th:text="${cafe.precio}"/>
 				<td th:text="${cafe.cantidad}"/>
+
+				<td th:each="nombreImagen : ${nombresImagenes}">
+					<img th:src="@{/ImagenesCafes/${ #strings.equals(cafe.nomcafe + '.jpg', nombreImagen) ? nombreImagen : '' }}"
+						alt="Cafes" width="100" height="100">
+				</td>
 				<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td>
 				<td><a th:href="@{insertCafe}">Insertar Cafe</a></td>
 				<!-- <td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td> -->

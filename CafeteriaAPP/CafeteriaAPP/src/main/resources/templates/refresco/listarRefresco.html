@@ -18,6 +18,9 @@
 				<td th:text="${refresco.nomRefresco}"/>
 				<td th:text="${refresco.precio}"/>
 				<td th:text="${refresco.cantidad}"/>
+				<td th:each="nombreImagen : ${nombresImagenes}">
+					<img th:src="@{/ImagenesRefrescos/${nombreImagen}.jpg}" alt="Refrescos" width="300" height="200">
+				</td>
 				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
 				<td><a th:href="@{insertRefresco}">Insertar Refresco</a></td>
 				<!-- <td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td> -->
