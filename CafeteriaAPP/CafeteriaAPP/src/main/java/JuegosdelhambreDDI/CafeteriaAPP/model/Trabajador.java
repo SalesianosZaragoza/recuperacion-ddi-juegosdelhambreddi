@@ -20,14 +20,41 @@ public class Trabajador {
 
     @Column(name = "nombre")
     private String nomTrabajador;
-
-    @Column(nullable = false)
+    @Column(name = "apellidos")
     private String apellidos;
+    @Column(name = "email")
+	private String email;
+    @Column(name = "password")
+    private String password;
 
+
+    public String getNomTrabajador() {
+        return nomTrabajador;
+    }
+
+    public void setNomTrabajador(String nomTrabajador) {
+        this.nomTrabajador = nomTrabajador;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
-    }
+    } 
 
     public void setId(Integer id) {
         this.id = id;

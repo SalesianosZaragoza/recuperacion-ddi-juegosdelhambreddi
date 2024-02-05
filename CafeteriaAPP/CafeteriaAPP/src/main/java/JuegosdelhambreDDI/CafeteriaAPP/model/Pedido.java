@@ -21,22 +21,36 @@ public class Pedido {
     )
     private Integer numPedido;
 
-    public Integer getNumPedido() {
-        return numPedido;
-    }
-
-    public void setNumPedido(Integer numPedido) {
-        this.numPedido = numPedido;
-    }   
-
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trabajador_id")
     private Trabajador trabajador;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "consumicion_id")
     private Consumicion consumicion;
+
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
+    public Integer getNumPedido() {
+        return numPedido;
+    }
+
+    public void setNumPedido(Integer numPedido) {
+        this.numPedido = numPedido;
+    }
 
     public Trabajador getTrabajador() {
         return trabajador;

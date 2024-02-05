@@ -3,23 +3,27 @@ package JuegosdelhambreDDI.CafeteriaAPP.model;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 @Entity
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+    @Column(name = "nombre")
     private String nombre;
+	@Column(name = "apellidos")
     private String apellidos;
+	@Column(name = "password")
     private String password;
+	@Column(name = "email")
 	private String email;
     
     // Constructor, getters, and setters

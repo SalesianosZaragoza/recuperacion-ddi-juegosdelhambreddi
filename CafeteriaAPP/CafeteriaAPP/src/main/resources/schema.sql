@@ -48,7 +48,7 @@ CREATE TABLE consumicion (
 -- Creación de la tabla 'pedido'
 CREATE TABLE pedido (
     num_pedido INTEGER NOT NULL,
-    bebida_id INTEGER,
+    usuario_id INTEGER,
     consumicion_id INTEGER,
     trabajador_id INTEGER,
     PRIMARY KEY (num_pedido)
@@ -67,7 +67,9 @@ CREATE TABLE refresco (
 CREATE TABLE trabajador (
     id INTEGER NOT NULL,
     apellidos VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
     nombre VARCHAR(255),
+    password VARCHAR(255),
     PRIMARY KEY (id)
 );
 
@@ -90,6 +92,6 @@ ALTER TABLE bebida ADD CONSTRAINT FK3gk5onhtip21b5gr2hyn8gi37 FOREIGN KEY (cafe_
 ALTER TABLE bebida ADD CONSTRAINT FKbedvyp6h3u0mhh7ir0gd9nu99 FOREIGN KEY (refresco_id) REFERENCES refresco;
 ALTER TABLE consumicion ADD CONSTRAINT FKdak95yst690q7khg2s4fcv2f4 FOREIGN KEY (bebida_id) REFERENCES bebida;
 ALTER TABLE consumicion ADD CONSTRAINT FK8gdymlfyw378dr21sboiv2bh FOREIGN KEY (comida_id) REFERENCES comida;
-ALTER TABLE pedido ADD CONSTRAINT FKs1mi3w1sljwlytso2ioqdh1i7 FOREIGN KEY (bebida_id) REFERENCES bebida;
+ALTER TABLE pedido ADD CONSTRAINT FKs1mi3w1sljwlytso2ioqdh1i7 FOREIGN KEY (usuario_id) REFERENCES usuario;
 ALTER TABLE pedido ADD CONSTRAINT FK9td4y476csbbmggun7jpsxog1 FOREIGN KEY (consumicion_id) REFERENCES consumicion;
 ALTER TABLE pedido ADD CONSTRAINT FK7jkms41qkp9oj73n1153hp1w3 FOREIGN KEY (trabajador_id) REFERENCES trabajador;
