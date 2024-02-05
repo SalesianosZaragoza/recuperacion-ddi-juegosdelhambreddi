@@ -6,16 +6,24 @@
 </head>
 <body>
 	<form th:action="@{/crearCafe}" th:object="${cafeCreado}">
+<!--ID-->			
 		<label for="id">ID:</label>
-		<input type="number" id="id"  th:field="*{id}"><br><br>
+		<input type="number" id="id"  th:field="*{id}">
+		<br><br>
+<!--NOMBRE-->		
 		<label for="nombre">Nombre:</label>
-		<input type="text" id="nomcafe"  th:field="*{nomcafe}"><br><br>
+		<input type="text" id="nomcafe"  th:field="*{nomcafe}">
+		<br><br>
+<!--PRECIO-->		
 		<label for="precio">Precio:</label>
-		<input type="number" id="precio"  th:field="*{precio}"><br><br>
+		<input type="number" id="precio"  th:field="*{precio}">
+		<br><br>
+<!--CANTIDAD-->		
 		<label for="precio">Cantidad:</label>
-		<input type="number" id="cantidad"  th:field="*{cantidad}"><br><br>
-		<input type="submit" value="Insertar">
-		
+		<input type="number" id="cantidad"  th:field="*{cantidad}">
+		<br><br>
+<!--boton-->
+		<input type="submit" value="Insertar">		
 	</form>
 </body>
 </html>

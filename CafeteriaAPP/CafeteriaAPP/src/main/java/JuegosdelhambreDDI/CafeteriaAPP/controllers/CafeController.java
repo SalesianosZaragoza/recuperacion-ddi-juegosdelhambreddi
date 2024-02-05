@@ -17,18 +17,16 @@ public class CafeController {
     @Autowired
 	CafeService cafeService;
     
-	@RequestMapping("/insertCafe")
+	@RequestMapping("/cafeForm")
 	public String insertCafeForm(Model model) {
 
 		model.addAttribute("cafeCreado", new Cafe());
-		return "cafe/CafeForm";
+		return "cafe/cafeForm";
 	}
-
-
 
     @RequestMapping("/crearCafe")
     public String crearCafe(Cafe cafeCreado, Model model) {
-		Cafe cafe2 = cafeService.addCafe(cafeCreado);
+		cafeService.addCafe(cafeCreado);
 		List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
 		
         model.addAttribute("cafes", lista);
