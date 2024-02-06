@@ -6,40 +6,94 @@
     <title>Bootstrap Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .form-container {
+            width: 350px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
 </head>
-<form style="width:550px;">
-  <!-- Entrada email-->
-  <div class="form-outline mb-4">
-    <input type="email" id="form2Example1" class="form-control" />
-    <label class="form-label" for="form2Example1">Email address</label>
-  </div>
+<body>
+<div class="container">
+    <form id="loginForm" class="form-container">
+        <!-- Entrada email-->
+        <div class="form-group">
+			<label class="form-label" for="email">Email address</label>
+            <input type="email" id="email" th:field="*{email}" class="form-control" />
+           
+        </div>
 
-  <!-- Entrada password -->
-  <div class="form-outline mb-4">
-    <input type="password" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
-  </div>
+        <!-- Entrada password -->
+        <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control" />
+        </div>
 
-  <!-- 2 column grid layout for inline styling -->
-  <div class="row mb-4">
-    <div class="col d-flex justify-content-center">
-      <!-- Checkbox -->
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-        <label class="form-check-label" for="form2Example31"> Remember me </label>
-      </div>
-    </div>
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+                <!-- Checkbox -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rememberMe" checked />
+                    <label class="form-check-label" for="rememberMe"> Remember me </label>
+                </div>
+            </div>
 
-    <div class="col">
-      <!-- Simple link -->
-      <a href="#!">Forgot password?</a>
-    </div>
-  </div>
-  <!-- Submit button -->
-  <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <div class="col">
+                <!-- Simple link -->
+                <a href="#!">Forgot password?</a>
+            </div>
+        </div>
+        <!-- Submit button -->
+        <button type="button" class="btn btn-primary btn-block mb-4" onclick="login()">Sign in</button>
 
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>Not a member? <a href="/src/main/resources/templates/Register.html">Register</a></p>
-  </div>
-</form>
+        <!-- Register buttons -->
+        <div class="text-center">
+            <p>Not a member? <a href="/src/main/resources/templates/Register.html">Register</a></p>
+        </div>
+    </form>
+</div>
+
+<script>
+  function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var rememberMe = document.getElementById("rememberMe").checked;
+
+    var data = {
+      email: email,
+      password: password,
+      rememberMe: rememberMe
+    };
+
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = '/dashboard'; // Redireccionar al dashboard si la respuesta es exitosa
+      } else {
+        throw new Error('Invalid credentials');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Invalid email or password. Please try again.');
+    });
+  }
+</script>
+</body>
+</html>
