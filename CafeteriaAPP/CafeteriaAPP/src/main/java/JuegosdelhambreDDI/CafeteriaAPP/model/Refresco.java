@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 
 @Entity
@@ -13,9 +14,12 @@ public class Refresco {
 
     @Id
     @Column(nullable = false, updatable = false)
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "primary_sequence"
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "refresco_sequence" )
+    @SequenceGenerator(
+        name = "refresco_sequence",
+        sequenceName = "refresco_sequence",
+        initialValue = 7,
+        allocationSize = 1
     )
     private Integer id;
 
