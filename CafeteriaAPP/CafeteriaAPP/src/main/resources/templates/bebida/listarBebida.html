@@ -15,6 +15,7 @@
 			<th>Cantidad</th>
 			<th>Cafe</th>
 			<th>Refresco</th>
+			<th>FOTO</th>
 			<!-- <th>Refresco</th> -->
 			<th colspan="4">Opciones</th>
 		</thead>
@@ -25,6 +26,9 @@
 				<td th:text="${bebida.cantidad}"/>
 				<td th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? ' ' : bebida.cafe.nomcafe}"/>
 				<td th:text="${ #strings.equals(bebida.refresco.nomRefresco, 'nulo') ? ' ' : bebida.refresco.nomRefresco}"/>
+				<td>
+					<img th:src="${bebida.cafe.nomcafe == 'nulo' ? '/ImagenesRefrescos/' + bebida.refresco.nomRefresco + '.jpg' : '/ImagenesCafe/' + bebida.cafe.nomcafe + '.jpg'}" th:height="100" th:width="100"/>
+				</td>
 				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
 				<td><a th:href="@{insertBebida}">Insertar bebida</a></td>
 				<td><a th:href="@{'/deletebebida/'+${bebida.id}}">Delete</a></td>

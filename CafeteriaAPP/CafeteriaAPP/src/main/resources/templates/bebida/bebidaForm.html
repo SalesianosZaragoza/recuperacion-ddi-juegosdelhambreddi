@@ -1,28 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thyneleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert Bebida</title>
-</head>
-<body>
-	<form th:action="@{/crearBebida}" th:object="${bebidaNueva}">
-		<label for="id" style="display: none;">ID:</label>
-		<input type="number" id="id"  th:field="*{id}" style="display: none;"><br><br>
-		<label for="cafe">CAFES:</label>
-		<select id="cafe" th:field="*{cafe}">
-			<option th:each="cafe: ${cafes}" th:value="${cafe.id}" th:text="${cafe.nomcafe}"></option>
-		</select><br><br>
-		<label for="refresco">REFRESCOS:</label>
-		<select id="refresco" th:field="*{refresco}">
-			<option th:each="refresco: ${refrescos}" th:value="${refresco.id}" th:text="${refresco.nomRefresco}"></option>
-		</select><br><br>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="...">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<title>Insert Bebida</title>
+	</head>
+	<body>
+		<form th:action="@{/crearBebida}" th:object="${bebidaNueva}">
+			<label for="id" style="display: none;">ID:</label>
+			<input type="number" id="id" th:field="*{id}" style="display: none;"><br><br>
+	
+			<label for="cafe">CAFES:</label>
+			<select id="cafe" th:field="*{cafe}">
+				<option th:each="cafe: ${cafes}" th:value="${cafe.id}" th:text="${cafe.nomcafe}"></option>
+			</select><br><br>
+			<div class="container">
+				<div class="row">
+					<!-- Iterar sobre los cafés y mostrar cada uno como una card -->
+					<div th:each="cafe: ${cafes}" class="col-md-4">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title" th:text="${cafe.nomcafe}"></h5>
+								<p class="card-text">Descripción u otra información sobre el café.</p>
+								<!-- Agregar un botón que al hacer clic establece el café seleccionado -->
+								<button type="button" class="btn btn-primary" th:onclick="/*[[${'seleccionarCafe(\'' + cafe.nomcafe + '\', ' + cafe.id + ')'}]]*/">Seleccionar</button>
 
-		<label for="precio">Precio:</label>
-		<input type="number" id="precio"  th:field="*{precio}"><br><br>
-		<label for="precio">Cantidad:</label>
-		<input type="number" id="cantidad"  th:field="*{cantidad}"><br><br>
-		<input type="submit" value="Insertar">
-		
-	</form>
-</body>
-</html>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><br><br>
+	
+			<label for="refresco">REFRESCOS:</label>
+			<select id="refresco" th:field="*{refresco}">
+				<option th:each="refresco: ${refrescos}" th:value="${refresco.id}" th:text="${refresco.nomRefresco}"></option>
+			</select><br><br>
+	
+			<label for="precio">Precio:</label>
+			<input type="number" id="precio" th:field="*{precio}"><br><br>
+	
+			<label for="precio">Cantidad:</label>
+			<input type="number" id="cantidad" th:field="*{cantidad}"><br><br>
+	
+			<input type="submit" value="Insertar">
+		</form>
+	
+		<!-- Script JavaScript para manejar la selección del café -->
+		<script>
+			function seleccionarCafe(nombreCafe, idCafe) {
+				// Asignar el nombre y el ID del café seleccionado a los campos del formulario
+				document.getElementById('cafe').value = idCafe;
+				// Puedes mostrar el nombre seleccionado en algún lugar si lo deseas
+				console.log('Café seleccionado:', nombreCafe);
+			}
+		</script>
+	</body>
+	</html>
+	
