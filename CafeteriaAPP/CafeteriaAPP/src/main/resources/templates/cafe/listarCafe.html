@@ -40,28 +40,29 @@
 <title>Los Cafes</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Mi Sitio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/consumicion">Consumicion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/listarCafe">Cafe</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<ul class="nav nav-pills nav-fill navbar-dark">
+		<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="/../">Indice</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarComida}">Comida</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarBebida}">Bebida</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarCafe}">Cafe</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarCafe}">Refresco</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{consumicion}">Consumicion</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
+		</li>
+	</ul>
 	<h1>Los Cafes</h1>
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
 		<thead>

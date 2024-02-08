@@ -2,12 +2,37 @@
 <html xmlns:th="http://www.thyneleaf.org">
 <head>
 <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 </style>
 <meta charset="UTF-8">
 <title>Las Comidas</title>
 </head>
 <body>
+	<ul class="nav nav-pills nav-fill navbar-dark">
+		<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="/../">Indice</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarComida}">Comida</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarBebida}">Bebida</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarCafe}">Cafe</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarCafe}">Refresco</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{consumicion}">Consumicion</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
+		</li>
+	</ul>
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
 		<th>Nombre de la Comida</th>
 		<th>Precio</th>

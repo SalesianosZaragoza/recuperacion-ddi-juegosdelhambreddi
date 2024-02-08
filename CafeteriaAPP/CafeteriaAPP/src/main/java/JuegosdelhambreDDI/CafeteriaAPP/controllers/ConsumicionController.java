@@ -34,7 +34,7 @@ public class ConsumicionController {
     public String getAllConsumiciones(Model model) {
         List<Consumicion> consumiciones = consumicionService.getAllConsumiciones();
         model.addAttribute("consumiciones", consumiciones);
-        return "consumicion/consumicion-list";
+        return "consumicion/listarConsumicion";
     }
 
     @RequestMapping("/add")
@@ -45,7 +45,7 @@ public class ConsumicionController {
         model.addAttribute("consumicionNueva", consumicion);
         model.addAttribute("bebidas", bebidas);
         model.addAttribute("comidas", comidas);
-        return "consumicion/consumicion-form";
+        return "consumicion/consumicionForm";
     }
 
     @RequestMapping("/save")

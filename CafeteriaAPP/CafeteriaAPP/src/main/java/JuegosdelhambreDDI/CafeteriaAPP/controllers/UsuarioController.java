@@ -25,9 +25,9 @@ public class UsuarioController {
 		return "/Register";
 	}
 	
-	@RequestMapping("/Login")
-	public String login() {		
-		
+	@RequestMapping("/Login")// GET
+	public String login(Model model) {		
+		model.addAttribute("email", new String());
 		return "/Login";
 	}
 	

@@ -43,7 +43,7 @@ public class CafeController {
 
 		model.addAttribute("cafes", lista);
 
-		return "cafe/listarCafe";
+		return this.mostrarCafes(model);
 	}
 
 	@GetMapping("/mostrar-cafe")

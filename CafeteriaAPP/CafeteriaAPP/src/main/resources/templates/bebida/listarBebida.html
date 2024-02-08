@@ -1,42 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thyneleaf.org">
-<head>
-<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
-<style>
-</style>
-<meta charset="UTF-8">
-<title>Las BEBIDAS</title>
-</head>
-<body>
-	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
-		<thead >
-			<th>Nombre</th>
-			<th>Precio</th>
-			<th>Cantidad</th>
-			<th>Cafe</th>
-			<th>Refresco</th>
-			<th>FOTO</th>
-			<!-- <th>Refresco</th> -->
-			<th colspan="4">Opciones</th>
-		</thead>
-		<tbody>
-			<tr th:each="bebida: ${bebidas}">
-				<td th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? bebida.refresco.nomRefresco : bebida.cafe.nomcafe}"/>
-				<td th:text="${bebida.precio}"/>
-				<td th:text="${bebida.cantidad}"/>
-				<td th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? ' ' : bebida.cafe.nomcafe}"/>
-				<td th:text="${ #strings.equals(bebida.refresco.nomRefresco, 'nulo') ? ' ' : bebida.refresco.nomRefresco}"/>
-				<td>
-					<img th:src="${bebida.cafe.nomcafe == 'nulo' ? '/ImagenesRefrescos/' + bebida.refresco.nomRefresco + '.jpg' : '/ImagenesCafe/' + bebida.cafe.nomcafe + '.jpg'}" th:height="100" th:width="100"/>
-				</td>
-				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
-				<td><a th:href="@{insertBebida}">Insertar bebida</a></td>
-				<td><a th:href="@{'/deletebebida/'+${bebida.id}}">Delete</a></td>
-			</tr>
-		</tbody>
-		<br>
-		<a href="/../">Volver al indice</a>
-		<br>
-	</table>
-</body>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=JetBrains Mono" rel="stylesheet" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+		<style></style>
+		<meta charset="UTF-8" />
+		<title>Las BEBIDAS</title>
+	</head>
+	<body>
+		<ul class="nav nav-pills nav-fill navbar-dark">
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="/../">Indice</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{listarComida}">Comida</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{listarBebida}">Bebida</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{listarCafe}">Cafe</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{listarCafe}">Refresco</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{consumicion}">Consumicion</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
+			</li>
+		</ul>
+		<table class="table table-striped table-bordered table-hover"
+			border="1px"
+			style="
+				display: table;
+				margin: auto;
+				margin-top: 200px;
+				width: 50%;
+				border-collapse: collapse;
+			"
+		>
+			<thead>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Cantidad</th>
+				<th>Cafe</th>
+				<th>Refresco</th>
+				<th>FOTO</th>
+				<!-- <th>Refresco</th> -->
+				<th colspan="4">Opciones</th>
+			</thead>
+			<tbody>
+				<tr th:each="bebida: ${bebidas}">
+					<td
+						th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? bebida.refresco.nomRefresco : bebida.cafe.nomcafe}"
+					/>
+					<td th:text="${bebida.precio}" />
+					<td th:text="${bebida.cantidad}" />
+					<td
+						th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? ' ' : bebida.cafe.nomcafe}"
+					/>
+					<td
+						th:text="${ #strings.equals(bebida.refresco.nomRefresco, 'nulo') ? ' ' : bebida.refresco.nomRefresco}"
+					/>
+					<td>
+						<img
+							th:src="${bebida.cafe.nomcafe == 'nulo' ? '/ImagenesRefrescos/' + bebida.refresco.nomRefresco + '.jpg' : '/ImagenesCafes/' + bebida.cafe.nomcafe + '.jpg'}"
+							th:height="100"
+							th:width="100"
+						/>
+					</td>
+					<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
+					<td><a th:href="@{insertBebida}">Insertar bebida</a></td>
+					<td><a th:href="@{'/deletebebida/'+${bebida.id}}">Delete</a></td>
+				</tr>
+			</tbody>
+			<br />
+
+			<br />
+		</table>
+	</body>
 </html>

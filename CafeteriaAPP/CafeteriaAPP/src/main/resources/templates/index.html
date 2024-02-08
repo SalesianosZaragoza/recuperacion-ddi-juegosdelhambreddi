@@ -86,6 +86,29 @@ generarTarjetas(refrescoData, "drink-cards");</script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <ul class="nav nav-pills nav-fill navbar-dark">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/../">Indice</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{listarComida}">Comida</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{listarBebida}">Bebida</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{listarCafe}">Cafe</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{listarCafe}">Refresco</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{consumicion}">Consumicion</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
+        </li>
+    </ul>
     <div class="section" id="food-section">
         <h2>Comida</h2>
         <div class="cards-container" id="food-cards"></div>
