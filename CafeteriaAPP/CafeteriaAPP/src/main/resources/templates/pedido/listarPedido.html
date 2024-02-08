@@ -1,35 +1,46 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thyneleaf.org">
-<head>
-<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
-<style>
-</style>
 <meta charset="UTF-8">
 <title>Los Cafes</title>
 </head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyneleaf.org">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+    <style>
+    </style>
+    <meta charset="UTF-8">
+    <title>Los Cafes</title>
+</head>
 <body>
-	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
-		<th>Numero Pedido</th>
-		<th>Nombre</th>
-		<th>Precio</th>
-		<th>Bebida</th>
-		<th>Comida</th>
-		<th colspan="2">Opciones</th>
-		<tbody>
-			<tr th:each="pedido: ${pedidos}">
-				<td th:text="${pedido.numPedido}"/>
-				<td th:text="${pedido.consumicion.nombreConsumicion}"/>
-				<td th:text="${pedido.consumicion.precio}"/>
-				<td th:text="${ #strings.equals(pedido.consumicion.bebida.cafe.nomcafe, 'nulo') ? pedido.consumicion.bebida.refresco.nomRefresco : pedido.consumicion.bebida.cafe.nomcafe}"/>
-				<td th:text="${ #strings.equals(pedido.consumicion.comida.nomComida, 'nulo') ? 'Sin Comida' : pedido.consumicion.comida.nomComida}"/>
-				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
-				<td><a th:href="@{/consumicion/add}">Insertar Consumicion</a></td>
-				<td><a th:href="@{'/deleteconsumicion/'+${pedido.consumicion.id}}">Delete</a></td>
-			</tr>
-		</tbody>
-		<br>
-		<a href="/../">Volver al indice</a>
-		<br>
-	</table>
+    <table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
+        <thead>
+            <th>Numero Pedido</th>
+            <th>Nombre Consumición</th>
+            <th>Precio</th>
+            <th>Cafe</th>
+            <th>Refresco</th>
+            <th>Comida</th>
+            <th colspan="2">Opciones</th>
+        </thead>
+        <tbody th:each="pedido: ${pedidos}">
+            <!-- <tr >
+                
+            </tr>
+            Aquí se anida otro bucle para consumicion -->
+            <tr th:each="consumicion: ${pedido.consumicion}">
+                <td th:text="${pedido.numPedido}"/>
+                <td th:text="${consumicion.nombreConsumicion}"/>
+                <td th:text="${consumicion.precio}"/>
+                <td th:text="${consumicion.bebida.cafe != null ? consumicion.bebida.cafe.nomcafe : 'Sin Cafe'}"/>
+                <td th:text="${consumicion.bebida.refresco != null ? consumicion.bebida.refresco.nomRefresco : 'Sin Refresco'}"/>
+                <td th:text="${consumicion.comida != null ? consumicion.comida.nomComida : 'Sin Comida'}"/>
+                <!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
+                <td><a th:href="@{/consumicion/add}">Insertar Consumición</a></td>
+                <td><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}">Delete Consumicion</a></td>
+            </tr>
+        </tbody>
+        <br>
+        <a href="/../">Volver al índice</a>
+        <br>
+    </table>
 </body>
 </html>
