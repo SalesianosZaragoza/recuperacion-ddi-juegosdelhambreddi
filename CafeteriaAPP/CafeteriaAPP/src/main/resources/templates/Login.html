@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="container">
-    <form id="loginForm" class="form-container" th:action="@{/ValidarLogin}" th:object="${usuario}">
+    <form id="loginForm" class="form-container" method="post" th:action="@{/ValidarLogin}" th:object="${usuario}">
         <!-- Entrada email-->
         <div class="form-group">
 			<label class="form-label" for="email">Email address</label>
