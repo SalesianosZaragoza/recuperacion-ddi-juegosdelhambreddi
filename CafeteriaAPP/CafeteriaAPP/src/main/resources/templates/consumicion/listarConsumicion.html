@@ -5,6 +5,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <style>
+	 footer {
+            background-color: blue;
+            color: white;
+            padding: 5px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+    }
+    .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
 </style>
 <meta charset="UTF-8">
 <title>Las Consumiciones</title>
@@ -34,7 +51,7 @@
 		</li>
 	</ul>
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
-		<thead >
+	<thead style="background-color: blue;">
 			<th>Nombre</th>
 			<th>Precio</th>
 			<th>Bebida</th>
@@ -53,9 +70,11 @@
 				<td><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}">Delete</a></td>
 			</tr>
 		</tbody>
-		<br>
-		<a href="/../">Volver al indice</a>
-		<br>
 	</table>
+	<footer>
+    <div class="container">
+        <a href="/../" class="btn btn-secondary">Volver al indice</a>
+    </div>
+</footer>
 </body>
 </html>
