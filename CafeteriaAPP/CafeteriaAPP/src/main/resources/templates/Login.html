@@ -25,21 +25,17 @@
 </head>
 <body>
 <div class="container">
-    <form id="loginForm" class="form-container">
+    <form id="loginForm" class="form-container" th:action="@{/ValidarLogin}" th:object="${usuario}">
         <!-- Entrada email-->
         <div class="form-group">
 			<label class="form-label" for="email">Email address</label>
-            <input type="email" id="email" th:field="*{email}" class="form-control" />
-           
+            <input type="email" id="email" th:field="*{email}" class="form-control" />     
         </div>
-
         <!-- Entrada password -->
         <div class="form-group">
             <label class="form-label" for="password">Password</label>
-            <!-- <input type="password" id="password" th:field="*{password}" class="form-control" /> -->
-        </div>
-
-        <!-- 2 column grid layout for inline styling -->
+            <input type="password" id="password" th:field="*{password}" class="form-control">
+        </div>    
         <div class="row mb-4">
             <div class="col d-flex justify-content-center">
                 <!-- Checkbox -->
@@ -55,7 +51,7 @@
             </div>
         </div>
         <!-- Submit button -->
-        <!-- <button type="button" class="btn btn-primary btn-block mb-4" onclick="${/ValidarLogin}">Sign in</button> -->
+       <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
         <!-- Register buttons -->
         <div class="text-center">
@@ -64,37 +60,6 @@
     </form>
 </div>
 
-<script>
-  function login() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var rememberMe = document.getElementById("rememberMe").checked;
 
-    var data = {
-      email: email,
-      password: password,
-      rememberMe: rememberMe
-    };
-
-    fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => {
-      if (response.ok) {
-        window.location.href = '/dashboard'; // Redireccionar al dashboard si la respuesta es exitosa
-      } else {
-        throw new Error('Invalid credentials');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Invalid email or password. Please try again.');
-    });
-  }
-</script>
 </body>
 </html>

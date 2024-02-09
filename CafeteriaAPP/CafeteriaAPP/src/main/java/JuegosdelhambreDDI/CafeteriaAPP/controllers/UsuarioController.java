@@ -27,19 +27,19 @@ public class UsuarioController {
 	
 	@RequestMapping("/Login")// GET
 	public String login(Model model) {		
-		model.addAttribute("email", new String());
+		model.addAttribute ("usuario", new Usuario());
 		return "/Login";
 	}
 	
 	@PostMapping("/ValidarLogin")
-	    public ModelAndView login(@RequestParam String email, @RequestParam String password) {
-	        Usuario usuario = usuarioService.searchUsuariobyEmail(email);
-	        if (usuario != null && usuario.getPassword().equals(password)) {
-	            return new ModelAndView("/index");
-	        } else {
-	            return new ModelAndView("/Login");
-	        }
+	public ModelAndView login(Usuario usuarioInput) {
+	    Usuario usuario = usuarioService.searchUsuariobyEmail(usuarioInput.getEmail());
+	    if (usuario != null && usuario.getPassword().equals(usuarioInput.getPassword())) {
+	        return new ModelAndView("/index");
+	    } else {
+	        return new ModelAndView("/Login");
 	    }
+	}
 	
 	@RequestMapping("/index")
 	public String index(String password) {
