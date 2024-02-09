@@ -7,7 +7,7 @@
 	body {
 		font-family: 'JetBrains Mono', monospace;
 	}
-	 footer {
+	footer {
             background-color: blue;
             color: white;
             padding: 5px 0;
@@ -89,7 +89,7 @@
 			style="
 				display: table;
 				margin: auto;
-				margin-top: 200px;
+				margin-top: 50px;
 				width: 50%;
 				border-collapse: collapse;">
 		<thead style="background-color: blue;">
@@ -97,8 +97,8 @@
 			<th>Nombre</th>
 			<th>Precio</th>
 			<th>Cantidad</th>
-			<th>FOTO</th>
-			<th colspan="2">Opciones</th>
+		 	<th>Opciones</th>
+			<th colspan="2">Foto</th>
 		</thead>
 		<tbody>
 			<tr th:each="cafe: ${cafes}">
@@ -106,22 +106,25 @@
 				<td th:text="${cafe.nomcafe}"/>
 				<td th:text="${cafe.precio}"/>
 				<td th:text="${cafe.cantidad}"/>
-
+				<!--td>
+					<a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a>
+				</td-->
+				<td>
+					<a th:href="@{insertCafe}">Insertar Cafe</a>
+				</td>
 				<td th:each="nombreImagen : ${nombresImagenes}"
-						th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null">
-					<img th:src="@{/ImagenesCafes/__${nombreImagen}__}"
+					th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null">
+				<img th:src="@{/ImagenesCafes/__${nombreImagen}__}"
 							alt="Cafes" width="100" height="100">
 				</td>
 						<!-- th:src="@{/ImagenesCafes/${ #strings.equals(__${cafe.nomcafe}__ + '.jpg', __${nombreImagen}__) ? __${nombreImagen}__ : __${nombreImagen}__ }}" -->
 						<!-- th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null"
- -->
-				<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td>
-				<td><a th:href="@{insertCafe}">Insertar Cafe</a></td>
-				<!-- <td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td> -->
+ --><!-- <td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td> -->
 			</tr>
 		</tbody>
-	</table><br><br>
-	
+	</table>
+	<br>
+	<br>
 	<h1>Los Cafes</h1>
 	<div class="container">
         <div class="row">
@@ -130,8 +133,7 @@
 					<div class="card-header">
 						<img th:each="nombreImagen : ${nombresImagenes}" th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null"
                         th:src="@{/ImagenesCafes/__${nombreImagen}__}" alt="Cafes" class="">
-					</div>
-                    
+					</div>                  
                     <div class="card-body">
                         <h5 class="card-title" th:text="${cafe.nomcafe}"></h5>
                         <p class="card-text">
