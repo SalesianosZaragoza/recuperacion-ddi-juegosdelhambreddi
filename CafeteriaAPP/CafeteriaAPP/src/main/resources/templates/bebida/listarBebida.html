@@ -8,6 +8,29 @@
 	<link rel="shortcut icon" href="/CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
 	<meta charset="UTF-8" />
+	<script th:inline="javascript">
+    
+	function borrarBoton() {
+		document.getElementById('boton').style.display = 'none';
+	}
+	function ocultarBoton(length) {
+        var boton = document.getElementById('boton');
+		if(length > 5)
+			boton.style.display = 'none';
+		else
+			document.getElementById('container').style.display = 'none';
+    }
+
+    function confirmarBorrar(bebidaId) {
+		// alert('comidaId: ' + comidaId);
+        if (confirm('¿Estás seguro de que deseas borrar este café?')) {
+            // Redirige al controlador de confirmación con el ID del café
+            window.location.href = '/borrarBebida?bebidaId=' + bebidaId;
+        } else {
+            // No hacer nada o realizar alguna acción adicional
+        }
+    }
+</script>
 <title>Las BEBIDAS</title>
 	</head>
 	<body th:onload="'ocultarBoton(' + ${bebidas.size()} + ')'">
@@ -34,53 +57,7 @@
 				<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
 			</li>
 		</ul>
-		<!--<table class="table table-striped table-bordered table-hover"
-			border="1px"
-			style="
-				display: table;
-				margin: auto;
-				margin-top: 200px;
-				width: 50%;
-				border-collapse: collapse;">
-			<thead style="background-color: blue;">
-				<th>ID</th>
-				<th>Nombre</th>
-				<th>Precio</th>
-				<th>Cantidad</th>
-				<th>Cafe</th>
-				<th>Refresco</th>
-				<th>FOTO</th>
-				<!-- <th>Refresco</th> --><!--
-				<th colspan="4">Opciones</th>
-			</thead>
-			<tbody>
-				<tr th:each="bebida: ${bebidas}">
-					<td th:text="${bebida.id}" />
-					<td
-						th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? bebida.refresco.nomRefresco : bebida.cafe.nomcafe}"
-					/>
-					<td th:text="${bebida.precio}" />
-					<td th:text="${bebida.cantidad}" />
-					<td
-						th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? ' ' : bebida.cafe.nomcafe}"/>
-					<td
-						th:text="${ #strings.equals(bebida.refresco.nomRefresco, 'nulo') ? ' ' : bebida.refresco.nomRefresco}"/>
-					<!-- <td
-						th:text="${#strings.isEmpty(bebida.cafe) ? ' ' : bebida.cafe.nomcafe}"/>
-					<td
-						th:text="${ #strings.isEmpty(bebida.refresco) ? ' ' : bebida.refresco.nomRefresco}"/> --><!--
-					<td>
-						<img
-							th:src="${bebida.cafe.nomcafe == 'nulo' ? '/ImagenesRefrescos/' + bebida.refresco.nomRefresco + '.jpg' : '/ImagenesCafes/' + bebida.cafe.nomcafe + '.jpg'}"
-							th:height="100"
-							th:width="100"
-						/>
-					</td>
-					<td><a th:href="@{insertBebida}">Insertar bebida</a></td>
-				</tr>
-			</tbody>
-		</table>-->
-<h1>Las Bebidas</h1>
+<h1>Bebidas</h1>
 <form method="post" th:action="@{/CrearBebidaByDefault}" id="boton" onload="ocultarBoton('${bebidas.length}')">
     <button type="submit" class="btn btn-warning" onload="ocultarBoton('${bebidas.length}')">Cargar Bebidas Por Defecto</button>
 </form>
@@ -91,10 +68,7 @@
                 <div class="card">
 					<div class="card-header">
 						<img
-							th:src="${bebida.cafe.nomcafe == 'nulo' ? '/ImagenesRefrescos/' + bebida.refresco.nomRefresco + '.jpg' : '/ImagenesCafes/' + bebida.cafe.nomcafe + '.jpg'}"
-							th:height="100"
-							th:width="100"
-						/>
+							th:src="${bebida.cafe.nomcafe == 'nulo' ? '/ImagenesRefrescos/' + bebida.refresco.nomRefresco + '.jpg' : '/ImagenesCafes/' + bebida.cafe.nomcafe + '.jpg'}"/>
 						<img th:each="nombreImagen : ${nombresImagenes}" 
 							th:if="${nombreImagen == bebida.cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null"
 							th:src="@{${nombreImagen == (bebida.cafe.nomcafe + '.jpg')} ? '/ImagenesCafes/' + ${nombreImagen} : '/ImagenesRefrescos/' + ${nombreImagen}}"
@@ -103,12 +77,11 @@
 					</div>
                     <div class="card-body">
                         <h5 class="card-title" 
-						th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? bebida.refresco.nomRefresco : bebida.cafe.nomcafe}"
-						></h5>
-						<h5 th:text="${bebida.id}"></h5>
-                        <p class="card-text" th:if="not ${bebida.cafe.precio==0}">
-                            Precio: <span th:text="${bebida.cafe.precio}"></span><br>
-                        </p>
+							th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? bebida.refresco.nomRefresco : bebida.cafe.nomcafe}"> 
+						</h5>				
+                        	<p class="card-text" th:if="not ${bebida.cafe.precio==0}">
+                            	Precio: <span th:text="${bebida.cafe.precio}"></span><br>
+                        	</p>
                     </div>
 					<div class="card-footer">
 						<small class="text-muted">Opciones</small><br>
@@ -119,33 +92,14 @@
             </div>
         </div>
     </div>
+<br>
+<br>
 <footer>
     <div class="container">
         <a href="/../" class="btn btn-secondary">Volver al indice</a>
     </div>
 </footer>
-<script th:inline="javascript">
-    
-	function borrarBoton() {
-		document.getElementById('boton').style.display = 'none';
-	}
-	function ocultarBoton(length) {
-        var boton = document.getElementById('boton');
-		if(length > 5)
-			boton.style.display = 'none';
-		else
-			document.getElementById('container').style.display = 'none';
-    }
 
-    function confirmarBorrar(bebidaId) {
-		// alert('comidaId: ' + comidaId);
-        if (confirm('¿Estás seguro de que deseas borrar este café?')) {
-            // Redirige al controlador de confirmación con el ID del café
-            window.location.href = '/borrarBebida?bebidaId=' + bebidaId;
-        } else {
-            // No hacer nada o realizar alguna acción adicional
-        }
-    }
-</script>
+
 </body>
 </html>
