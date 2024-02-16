@@ -51,10 +51,11 @@
 			<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
 		</li>
 	</ul>
+	<h1>Bocadillos</h1>
 	<table border="1px" 
 			style="display: table; margin:auto; margin-top:75px; width: 50%;border-collapse: collapse;"
 			class="table table-striped table-bordered table-hover mb-5">
-		<th>Nombre de la Comida</th>
+		<th>Bocadillos</th>
 		<th>Precio</th>
 		<th>FOTO</th>
 		<!-- <th>Cantidad</th> -->
@@ -63,9 +64,12 @@
 			<tr th:each="comida: ${comidas}">
 				<td th:text="${comida.nomComida}"/>
 				<td th:text="${comida.precio}"/>
-				<td>
-						<img th:src="@{'/'+${comida.nomComida} + '.jpg'}"
+				<td th:each="nombreImagen : ${nombresImagenes}"
+					th:if="${nombreImagen == comida.nomComida + '.jpg'} ? ${nombreImagen} : null">
+					<img th:src="@{/ImagenesBocadillos/__${nombreImagen}__}"
 							alt="Comida" width="100" height="100">
+						<!--img th:src="{'/'+${comida.nomComida} + '.jpg'}"
+							alt="Comida" width="100" height="100"-->
 				</td>
 				<!-- <td th:text="${comida.cantidad}"/> -->
 				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->

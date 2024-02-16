@@ -1,5 +1,9 @@
 package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -62,6 +66,19 @@ public class ComidaController {
 
 	@RequestMapping("/listarComida")
 	public String listarComida(Model model) {
+		 String rutaCarpetaImagenes = "src/main/resources/static/ImagenesBocadillos/";
+			List<String> nombresImagenes = new ArrayList<>();
+
+			File carpetaImagenes = new File(rutaCarpetaImagenes);
+	        File[] archivos = carpetaImagenes.listFiles();
+
+			if (archivos != null) {
+	            for (File archivo : archivos) {
+	                nombresImagenes.add(archivo.getName());
+	            }
+	        }
+			model.addAttribute("nombresImagenes", nombresImagenes);
+
 		Iterable<Comida> lista = comidaService.getAllComidas();
 		model.addAttribute("comidas", lista);
 
