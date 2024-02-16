@@ -24,7 +24,7 @@ public class Bebida {
     private Integer id;
 
 
-    @Column(nullable = false)
+    @Column()
     private String cantidad;
 
     @Column(nullable = false)

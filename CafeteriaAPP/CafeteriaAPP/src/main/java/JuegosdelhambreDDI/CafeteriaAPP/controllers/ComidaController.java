@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Comida;
 import JuegosdelhambreDDI.CafeteriaAPP.service.ComidaService;
@@ -12,77 +13,68 @@ import JuegosdelhambreDDI.CafeteriaAPP.service.ComidaService;
 @Controller
 public class ComidaController {
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+	@Autowired
+	JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    ComidaService comidaService;
+	@Autowired
+	ComidaService comidaService;
 
-    
-    // @RequestMapping("/insertComida")
+	// @RequestMapping("/insertComida")
 	// public String insertComidaForm(Model model) {
 
-	// 	model.addAttribute("comidaNueva", new Comida());
-	// 	return "comida/comidaForm";
+	// model.addAttribute("comidaNueva", new Comida());
+	// return "comida/comidaForm";
 	// }
-   
-    
+
 	// @RequestMapping("/listarComida")
 	// public String listarComida(Model model) {
-	// 	Iterable<Comida> lista = comidaService.getAllComidas();
-	// 	model.addAttribute("comidas", lista);
+	// Iterable<Comida> lista = comidaService.getAllComidas();
+	// model.addAttribute("comidas", lista);
 
-	// 	return "comida/listarComida";
+	// return "comida/listarComida";
 	// }
-    
 
+	// Comida
 
+	@RequestMapping("/insertComida")
+	public String insertComidaForm(Model model) {
 
+		model.addAttribute("comidaNueva", new Comida());
+		return "comida/comidaForm";
+	}
 
-//          Comida
-    
-@RequestMapping("/insertComida")
-public String insertComidaForm(Model model) {
+	@RequestMapping("/crearComida")
+	public String crearComida(Comida comidaNueva, Model model) {
+		Comida comida = comidaService.addComida(comidaNueva);
 
-	model.addAttribute("comidaNueva", new Comida());
-	return "comida/comidaForm";
-}
+		return this.listarComida(model);
+	}
 
+	@RequestMapping("/crearComidaNueva")
+	public String crearComidaNueva(Comida comidaNueva, Model model) {
+		// System.out.println("crearComidaNueva");
+		Comida comida = comidaService.addComida(comidaNueva);
+		Iterable<Comida> lista = comidaService.getAllComidas();
+		model.addAttribute("comidas", lista);
 
-@RequestMapping("/crearComida")
-public String crearComida(Comida comidaNueva, Model model) {
-	Comida comida = comidaService.addComida(comidaNueva);
+		return this.listarComida(model);
+	}
 
-	return this.listarComida(model);
-}
+	@RequestMapping("/listarComida")
+	public String listarComida(Model model) {
+		Iterable<Comida> lista = comidaService.getAllComidas();
+		model.addAttribute("comidas", lista);
 
-@RequestMapping("/crearComidaNueva")
-public String crearComidaNueva(Comida comidaNueva, Model model) {
-	// System.out.println("crearComidaNueva");
-	Comida comida = comidaService.addComida(comidaNueva);
-	Iterable<Comida> lista = comidaService.getAllComidas();
-	model.addAttribute("comidas", lista);
+		return "comida/listarComida";
+	}
 
-	return "comida/listarComida";
-}
+	
 
-@RequestMapping("/listarComida")
-public String listarComida(Model model) {
-	Iterable<Comida> lista = comidaService.getAllComidas();
-	model.addAttribute("comidas", lista);
+	@RequestMapping("/borrarComida")
+	public String borrarComida(@RequestParam int comidaId, Model model) {
+		comidaService.deleteComida(comidaId);
 
-	return "comida/listarComida";
-}
+		return this.listarComida(model);
+	}
 
-
-
-
-
-
-
-
-
-
-
-    
 }

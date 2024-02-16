@@ -1,11 +1,14 @@
 package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Bebida;
 import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
@@ -58,6 +61,37 @@ public class BebidaController {
 		model.addAttribute("bebidas", lista);
 
 		return "bebida/listarBebida";
+	}
+
+	@RequestMapping("/CrearBebidaByDefault")
+	public String CrearBebidaByDefault(Model model) {
+		List<Refresco> listaRefrescos = (List)refrescoService.getAllRefrescos();
+		listaRefrescos.remove(0);
+		List<Cafe> listaCafes = (List) cafeService.getAllCafes();
+		listaCafes.remove(0);
+		
+		for (Cafe cafe : listaCafes) {
+			Bebida bebida = new Bebida();
+			bebida.setCafe(cafe);
+			bebida.setRefresco(refrescoService.getRefrescoById(0).orElse(null));
+			bebida.setPrecio(cafe.getPrecio());
+			bebidaService.addBebida(bebida);
+		}
+		for (Refresco refresco : listaRefrescos) {
+			Bebida bebida = new Bebida();
+			bebida.setRefresco(refresco);
+			bebida.setCafe(cafeService.getCafeById(0).orElse(null));
+			bebida.setPrecio(refresco.getPrecio());
+			bebidaService.addBebida(bebida);
+		}
+		return this.listarBebida(model);
+	}
+
+	@RequestMapping("/borrarBebida")
+	public String borrarBebida(@RequestParam int bebidaId, Model model) {
+		bebidaService.deleteBebida(bebidaId);
+
+		return this.listarBebida(model);
 	}
     
 }

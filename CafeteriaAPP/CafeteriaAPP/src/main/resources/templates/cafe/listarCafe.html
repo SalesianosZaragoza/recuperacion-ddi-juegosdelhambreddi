@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thyneleaf.org">
 <head>
+<link rel="icono" href="CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico">
 <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
@@ -58,6 +59,8 @@
 </style>
 <meta charset="UTF-8">
 <title>Los Cafes</title>
+<!-- <link rel="shortcut icon" href="/CafeteriaAPP/CafeteriaAPP/src/main/resources/static/icono.png"  type="image/x-icon"> -->
+
 </head>
 <body>
 	<ul class="nav nav-pills nav-fill navbar-dark">
@@ -96,8 +99,7 @@
 			<th>ID</th>
 			<th>Nombre</th>
 			<th>Precio</th>
-			<th>Cantidad</th>
-		 	<th>Opciones</th>
+			<th colspan="2">Opciones</th>
 			<th colspan="2">Foto</th>
 		</thead>
 		<tbody>
@@ -105,16 +107,17 @@
 				<td th:text="${cafe.id}"/>
 				<td th:text="${cafe.nomcafe}"/>
 				<td th:text="${cafe.precio}"/>
-				<td th:text="${cafe.cantidad}"/>
 				<!--td>
 					<a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a>
 				</td-->
 				<td>
-					<a th:href="@{insertCafe}">Insertar Cafe</a>
+					<a th:href="@{insertCafe}">Update Cafe</a>
+					<a th:href="@{borrarCafe}">borrar Cafe</a>
 				</td>
 				<td th:each="nombreImagen : ${nombresImagenes}"
 					th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null">
-				<img th:src="@{/ImagenesCafes/__${nombreImagen}__}"
+
+					<img th:src="@{/ImagenesCafes/__${nombreImagen}__}"
 							alt="Cafes" width="100" height="100">
 				</td>
 						<!-- th:src="@{/ImagenesCafes/${ #strings.equals(__${cafe.nomcafe}__ + '.jpg', __${nombreImagen}__) ? __${nombreImagen}__ : __${nombreImagen}__ }}" -->
@@ -126,33 +129,48 @@
 	<br>
 	<br>
 	<h1>Los Cafes</h1>
-	<div class="container">
-        <div class="row">
-            <div th:each="cafe: ${cafes}" class="col-md-4">
-                <div class="card">
-					<div class="card-header">
-						<img th:each="nombreImagen : ${nombresImagenes}" th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null"
-                        th:src="@{/ImagenesCafes/__${nombreImagen}__}" alt="Cafes" class="">
-					</div>                  
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${cafe.nomcafe}"></h5>
-                        <p class="card-text">
-                            Precio: <span th:text="${cafe.precio}"></span><br>
-                            Cantidad: <span th:text="${cafe.cantidad}"></span>
-                        </p>
-                    </div>
-					<div class="card-footer">
-						<small class="text-muted">Click for insert NEW</small>
-						<a th:href="@{insertCafe}" class="btn btn-primary">Insertar Cafe</a>
+		<div class="container mb-5">
+			<div class="row">
+				<div th:each="cafe: ${cafes}" class="col-md-4">
+					<div class="card">
+						<div class="card-header">
+							<img th:each="nombreImagen : ${nombresImagenes}" th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null"
+							th:src="@{/ImagenesCafes/__${nombreImagen}__}" alt="Cafes" class="">
+						</div>                  
+						<div class="card-body">
+							<h5 class="card-title" th:text="${cafe.nomcafe}"></h5>
+							<p class="card-text">
+								Precio: <span th:text="${cafe.precio}"></span><br>
+								Id:<span th:text="${cafe.id}"></span>
+							</p>
+						</div>
+						<div class="card-footer">
+							<small class="text-muted">OPTIONS</small><br>
+							<a th:href="@{insertCafe}" class="btn btn-primary">Insertar Cafe</a>
+							<!-- <a th:href="@{borrarCafe}" class="btn btn-primary">Insertar Cafe</a> -->
+							<button class="btn btn-danger" th:onclick="'confirmarBorrar(\'' + ${cafe.id} + '\')'">Eliminar</button>
+						</div>
 					</div>
-                </div>
-            </div>
-        </div>
-    </div>
+				</div>
+			</div>
+		</div>
+
 <footer>
     <div class="container">
         <a href="/../" class="btn btn-secondary">Volver al indice</a>
     </div>
 </footer>
+<script th:inline="javascript">
+    function confirmarBorrar(cafeId) {
+		// alert('CafeId: ' + cafeId);
+        if (confirm('¿Estás seguro de que deseas borrar esta Comida?')) {
+            // Redirige al controlador de confirmación con el ID del café
+            window.location.href = '/borrarCafe?cafeId=' + cafeId;
+			cafeId = 0;
+        } else {
+            // No hacer nada o realizar alguna acción adicional
+        }
+    }
+</script>
 </body>
 </html>

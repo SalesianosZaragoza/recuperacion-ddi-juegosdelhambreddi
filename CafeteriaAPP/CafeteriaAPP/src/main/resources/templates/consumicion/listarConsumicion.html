@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thyneleaf.org">
 <head>
+	<link rel="icono" href="CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico">
 <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.css">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-	 footer {
+	footer {
             background-color: blue;
             color: white;
             padding: 5px 0;
@@ -32,30 +33,36 @@
 			<a class="nav-link active" aria-current="page" href="/../">Indice</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" th:href="@{listarComida}">Comida</a>
+			<a class="nav-link" th:href="@{/listarComida}">Comida</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" th:href="@{listarBebida}">Bebida</a>
+			<a class="nav-link" th:href="@{/listarBebida}">Bebida</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" th:href="@{listarCafe}">Cafe</a>
+			<a class="nav-link" th:href="@{/listarCafe}">Cafe</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" th:href="@{listarRefresco}">Refresco</a>
+			<a class="nav-link" th:href="@{/listarRefresco}">Refresco</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" th:href="@{consumicion}">Consumicion</a>
+			<a class="nav-link" th:href="@{/consumicion}">Consumicion</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
+			<a class="nav-link" th:href="@{/listarPedido}">Pedidos</a>
 		</li>
 	</ul>
+
+
+	<h1 class="m-5"><a th:href="@{/consumicion/add}" class="btn btn-outline-info">Insertar Consumicion</a></h1>
+
+
 	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
 	<thead style="background-color: blue;">
 			<th>Nombre</th>
 			<th>Precio</th>
 			<th>Bebida</th>
-			<th>Comida</th>
+			<th>Cantidad Bebida</th>
+			<th>Cantidad Comida</th>
 			<!-- <th>Refresco</th> -->
 			<th colspan="4">Opciones</th>
 		</thead>
@@ -65,8 +72,10 @@
 				<td th:text="${consumicion.precio}"/>
 				<td th:text="${ #strings.equals(consumicion.bebida.cafe.nomcafe, 'nulo') ? consumicion.bebida.refresco.nomRefresco : consumicion.bebida.cafe.nomcafe}"/>
 				<td th:text="${ #strings.equals(consumicion.comida.nomComida, 'nulo') ? 'Sin Comida' : consumicion.comida.nomComida}"/>
+				<td th:text="${consumicion.cantidadBebida}"/>
+				<td th:text="${consumicion.cantidadComida}"/>
 				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
-				<td><a th:href="@{/consumicion/add}">Insertar Consumicion</a></td>
+				<td><a th:href="@{'/consumicion/update/'+${consumicion.id}}">Actualizar Consumicion</a></td>
 				<td><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}">Delete</a></td>
 			</tr>
 		</tbody>

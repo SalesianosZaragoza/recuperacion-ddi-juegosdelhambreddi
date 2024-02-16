@@ -18,8 +18,8 @@ public class Cafe {
     @Column(name = "NOMCAFE")
     private String nomcafe;
 
-    @Column
-    private Integer cantidad;
+    // @Column
+    // private Integer cantidad;
 
     @Column
     private Double precio;
@@ -27,10 +27,10 @@ public class Cafe {
     public Cafe() {
     }
 
-    public Cafe(Integer id, String nomCafe, Integer cantidad, Double precio) {
+    public Cafe(Integer id, String nomCafe, Double precio) {
         this.id = id;
         this.nomcafe = nomCafe;
-        this.cantidad = cantidad;
+        // this.cantidad = cantidad;
         this.precio = precio;
     }
 
@@ -50,13 +50,13 @@ public class Cafe {
         this.nomcafe = nomCafe;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
+    // public Integer getCantidad() {
+    //     return cantidad;
+    // }
 
-    public void setCantidad(final Integer cantidad) {
-        this.cantidad = cantidad;
-    }
+    // public void setCantidad(final Integer cantidad) {
+    //     this.cantidad = cantidad;
+    // }
 
     public Double getPrecio() {
         return precio;

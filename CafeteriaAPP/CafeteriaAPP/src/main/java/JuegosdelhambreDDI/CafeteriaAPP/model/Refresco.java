@@ -26,8 +26,8 @@ public class Refresco {
     @Column(name = "NOMREFRESCO")
     private String nomRefresco;
 
-    @Column(nullable = false)
-    private Integer cantidad;
+    // @Column(nullable = false)
+    // private Integer cantidad;
 
     @Column(nullable = false)
     private Double precio;
@@ -48,13 +48,13 @@ public class Refresco {
         this.nomRefresco = nomRefresco;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
+    // public Integer getCantidad() {
+    //     return cantidad;
+    // }
 
-    public void setCantidad(final Integer cantidad) {
-        this.cantidad = cantidad;
-    }
+    // public void setCantidad(final Integer cantidad) {
+    //     this.cantidad = cantidad;
+    // }
 
     public Double getPrecio() {
         return precio;

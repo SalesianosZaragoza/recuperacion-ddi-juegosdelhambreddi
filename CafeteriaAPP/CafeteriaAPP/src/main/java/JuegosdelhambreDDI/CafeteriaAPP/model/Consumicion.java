@@ -27,6 +27,10 @@ private String nombreConsumicion;
 @Column(nullable = false)
 private double precio;
 
+@Column()
+private int cantidadComida;
+@Column()
+private int cantidadBebida;
 
 
 public String getNombreConsumicion() {
@@ -89,7 +93,22 @@ public void setId(Integer id) {
         this.bebida = bebida;
     }   
 
-    //FALTARIA LA RELACION CON PEDIDO
+
+    public int getcantidadBebida() {
+        return cantidadBebida;
+    }
+
+    public void setcantidadBebida(int cantidad_bebida) {
+        this.cantidadBebida = cantidad_bebida;
+    }
+
+    public int getCantidadComida() {
+        return cantidadComida;
+    }
+
+    public void setCantidadComida(int cantidadComidaNueva) {
+        this.cantidadComida = cantidadComidaNueva;
+    }
 
 
 

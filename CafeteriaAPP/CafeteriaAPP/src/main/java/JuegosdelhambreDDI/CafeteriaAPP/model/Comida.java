@@ -23,8 +23,8 @@ public class Comida {
         @Column(nullable = false)
         private String nomComida;
 
-        @Column(nullable = false)
-        private Integer cantidad;
+        // @Column(nullable = false)
+        // private Integer cantidad;
 
         @Column(nullable = false)
         private Double precio;
@@ -49,13 +49,13 @@ public class Comida {
             this.nomComida = nomProducto;
         }
 
-        public Integer getCantidad() {
-            return cantidad;
-        }
+        // public Integer getCantidad() {
+        //     return cantidad;
+        // }
 
-        public void setCantidad(Integer cantidad) {
-            this.cantidad = cantidad;
-        }
+        // public void setCantidad(Integer cantidad) {
+        //     this.cantidad = cantidad;
+        // }
 
         public Double getPrecio() {
             return precio;

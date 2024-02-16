@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
 import JuegosdelhambreDDI.CafeteriaAPP.service.CafeService;
@@ -30,12 +31,47 @@ public class CafeController {
     @RequestMapping("/crearCafe")
     public String crearCafe(Cafe cafeCreado, Model model) {
 		Cafe cafe = cafeService.addCafe(cafeCreado);
-		List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
-		
-        model.addAttribute("cafes", lista);
 
-        return "cafe/listarCafe";
+		// List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
+        // model.addAttribute("cafes", lista);
+
+        return this.mostrarCafes(model);
     }
+
+	@RequestMapping("/cafeDeleteForm")
+	public String cafeDeleteForm(Model model) {
+
+		model.addAttribute("cafeBorrado", new Cafe());
+		return "cafe/cafeBorrarForm";
+	}
+
+	@RequestMapping("/borrarCafe")
+    public String borrarCafe(@RequestParam int cafeId, Model model) {
+		cafeService.deleteCafe(cafeId);
+
+		// List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
+        // model.addAttribute("cafes", lista);
+
+        return this.mostrarCafes(model);
+    }
+
+	@RequestMapping("/cafeUpdateForm")
+	public String cafeUpdateForm(Model model) {
+
+		model.addAttribute("cafeActualizado", new Cafe());
+		return "cafe/cafeForm";
+	}
+
+	@RequestMapping("/editCafe")
+    public String editCafe(Cafe cafeActualizado, Model model) {
+		cafeService.addCafe(cafeActualizado);
+
+		// List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
+        // model.addAttribute("cafes", lista);
+
+        return this.mostrarCafes(model);
+    }
+
     
 	@RequestMapping("/listarCafe")
 	public String listarCafe(Model model) {

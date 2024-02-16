@@ -37,6 +37,18 @@ public class ConsumicionController {
         return "consumicion/listarConsumicion";
     }
 
+    @RequestMapping("/update/{id}")
+    public String updateConsumicion(@PathVariable int id,Model model) {
+        Consumicion consumicion = new Consumicion();
+        consumicion.setId(id);
+        Iterable<Bebida> bebidas = bebidaService.getAllBebidas();
+        Iterable<Comida> comidas = comidaService.getAllComidas();
+        model.addAttribute("consumicionNueva", consumicion);
+        model.addAttribute("bebidas", bebidas);
+        model.addAttribute("comidas", comidas);
+        return "consumicion/consumicionForm";
+    }
+
     @RequestMapping("/add")
     public String addConsumicion(Model model) {
         Consumicion consumicion = new Consumicion();

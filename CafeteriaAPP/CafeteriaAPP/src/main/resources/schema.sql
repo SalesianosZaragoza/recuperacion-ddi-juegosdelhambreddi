@@ -1,7 +1,7 @@
 -- Creación de la tabla 'bebida'
 CREATE TABLE bebida (
     id INTEGER NOT NULL,
-    cantidad VARCHAR(255) NOT NULL,
+    
     precio FLOAT(53) NOT NULL,
     cafe_id INTEGER,
     refresco_id INTEGER,
@@ -11,7 +11,7 @@ CREATE TABLE bebida (
 -- Creación de la tabla 'cafe'
 CREATE TABLE cafe (
     id INTEGER NOT NULL,
-    cantidad INTEGER,
+    -- cantidad INTEGER,
     nomcafe VARCHAR(255),
     precio FLOAT(53),
     PRIMARY KEY (id)
@@ -29,7 +29,6 @@ CREATE TABLE cliente (
 -- Creación de la tabla 'comida'
 CREATE TABLE comida (
     id INTEGER NOT NULL,
-    cantidad INTEGER NOT NULL,
     nom_comida VARCHAR(255) NOT NULL,
     precio FLOAT(53) NOT NULL,
     PRIMARY KEY (id)
@@ -40,6 +39,8 @@ CREATE TABLE consumicion (
     id INTEGER NOT NULL,
     nombre_consumicion VARCHAR(255) NOT NULL,
     precio FLOAT(53) NOT NULL,
+    cantidad_comida INTEGER NOT NULL,
+    cantidad_bebida INTEGER NOT NULL,
     bebida_id INTEGER,
     comida_id INTEGER,
     PRIMARY KEY (id)
@@ -57,7 +58,7 @@ CREATE TABLE pedido (
 -- Creación de la tabla 'refresco'
 CREATE TABLE refresco (
     id INTEGER NOT NULL,
-    cantidad INTEGER NOT NULL,
+    -- cantidad INTEGER NOT NULL,
     nomrefresco VARCHAR(255),
     precio FLOAT(53) NOT NULL,
     PRIMARY KEY (id)
@@ -85,7 +86,7 @@ CREATE TABLE usuario (
 
 -- Creación de secuencias
 CREATE SEQUENCE cafe_seq START WITH 1 INCREMENT BY 50;
-CREATE SEQUENCE primary_sequence START WITH 1 INCREMENT BY 50;
+CREATE SEQUENCE primary_sequence START WITH 10 INCREMENT BY 50;
 
 -- Añadir restricciones de clave externa
 ALTER TABLE bebida ADD CONSTRAINT FK3gk5onhtip21b5gr2hyn8gi37 FOREIGN KEY (cafe_id) REFERENCES cafe;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thyneleaf.org">
 <head>
+	<link rel="icono" href="CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico">
 <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
@@ -82,7 +83,7 @@
 			<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
 		</li>
 	</ul>
-	<h1>Los Refrescos</h1>
+	<!-- <h1>Los Refrescos</h1>
 	<table class="table table-striped table-bordered table-hover"
 			border="1px"
 			style="
@@ -95,7 +96,6 @@
 			<th>ID</th>
 			<th>Nombre</th>
 			<th>Precio</th>
-			<th>Cantidad</th>
 			<th>Opciones</th>
 			<th colspan="2">Foto</th>
 		</thead>
@@ -104,19 +104,17 @@
 				<td th:text="${refresco.id}"/>
 				<td th:text="${refresco.nomRefresco}"/>
 				<td th:text="${refresco.precio}"/>
-				<td th:text="${refresco.cantidad}"/>
 				<td><a th:href="@{insertRefresco}">Insertar Refresco</a></td>
 				<td	th:each="nombreImagen : ${nombresImagenes}"
 					th:if="${nombreImagen == refresco.nomRefresco + '.jpg'} ? ${nombreImagen} : null">
-						<!-- <label th:text="${nombreImagen}"></label> -->
 						<img th:src="@{/ImagenesRefrescos/__${nombreImagen}__}" 
 							alt="Refrescos" width="100" height="100">
 				</td>
-				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->		
-				<!-- <td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td> -->
+				<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td>
+				<td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td>
 			</tr>
 		</tbody>
-	</table>
+	</table> -->
 	<br>
 	<br>
 	<h1>Los Refrescos</h1>
@@ -132,7 +130,6 @@
                         <h5 class="card-title" th:text="${refresco.nomRefresco}"></h5>
                         <p class="card-text">
                             Precio: <span th:text="${refresco.precio}"></span><br>
-                            Cantidad: <span th:text="${refresco.cantidad}"></span>
                         </p>
                     </div>
 					<div class="card-footer">
