@@ -2,31 +2,13 @@
 <html xmlns:th="http://www.thyneleaf.org">
 <head>
     <link rel="stylesheet" ref="/CafeteriaAPP/CafeteriaAPP/src/main/resources/templates/style.css">
-<link rel="icono" href="CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico">
-<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="shortcut icon" href="/CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico" type="image/x-icon">
-
-<style> 
-	footer {
-            background-color: blue;
-            color: white;
-            padding: 5px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-    }
-    .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-</style>
-		<meta charset="UTF-8" />
-		<title>Las BEBIDAS</title>
+	<link rel="icono" href="CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico">
+	<link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="/CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/style.css">
+	<meta charset="UTF-8" />
+<title>Las BEBIDAS</title>
 	</head>
 	<body th:onload="'ocultarBoton(' + ${bebidas.size()} + ')'">
 		<ul class="nav nav-pills nav-fill navbar-dark">

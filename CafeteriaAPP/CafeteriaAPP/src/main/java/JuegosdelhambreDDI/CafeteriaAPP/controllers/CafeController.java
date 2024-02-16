@@ -97,7 +97,6 @@ public class CafeController {
             }
         }
 		model.addAttribute("nombresImagenes", nombresImagenes);
-
 		
 		Iterable<Cafe> lista = cafeService.getAllCafes();
 		model.addAttribute("cafes", lista);
@@ -105,7 +104,5 @@ public class CafeController {
 		return "cafe/listarCafe";
 
     }
-
-
 
 }
