@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        
+		<style>
+			.section {
+				margin-bottom: 20px;
+			}
+
+			.cards-container {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 20px;
+			}
+
+			.card {
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				width: 200px;
+				padding: 10px;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			}
+
+			.alturaReducida {
+				max-height: 220px;
+			}
+
+			.card img {
+				width: 100%;
+				border-radius: 5px;
+				margin-bottom: 10px;
+			}
+
+			.card h3 {
+				margin: 0;
+				font-size: 18px;
+			}
+
+			.card p {
+				margin: 5px 0;
+				font-size: 14px;
+			}
+		</style>
+		<script></script>
+		
+
+		<meta charset="UTF-8" />
+		<link rel="icono" href="CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Restaurant</title>
+		<link rel="stylesheet" href="css/style.css" />
+        <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<ul class="nav nav-pills nav-fill navbar-dark">
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" th:href="@{indexClient}">Indice</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{Login}">Login</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{consumicion}">Consumicion</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
+			</li>
+		</ul>
+		<div class="section d-flex justify-content-center mt-5" id="food-section">
+			<div class="alturaReducida card mr-5 btn btn-outline-dark">
+				<div class="card-body btn btn-info">
+					<h5 class="card-title">
+						<a th:href="@{consumicion}" class="btn btn-primary">Consumiciones</a>
+					</h5>
+					<p class="card-text">Cafes, Refrescos Y Comidas</p>
+				</div>
+			</div>
+			<div class="alturaReducida card btn btn-outline-dark">
+				<div class="card-body btn btn-info">
+					<h5 class="card-title">
+						<a th:href="@{listarPedido}" class="btn btn-primary">Lista de Pedidos</a>
+					</h5>
+					<p class="card-text">Realice su Pedido</p>
+				</div>
+			</div>
+		</div>
+	
+	</body>
+</html>

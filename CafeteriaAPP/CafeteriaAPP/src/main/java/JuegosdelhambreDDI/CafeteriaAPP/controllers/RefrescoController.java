@@ -3,15 +3,19 @@ package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import JuegosdelhambreDDI.CafeteriaAPP.model.Bebida;
 import JuegosdelhambreDDI.CafeteriaAPP.model.Refresco;
+import JuegosdelhambreDDI.CafeteriaAPP.service.BebidaService;
 import JuegosdelhambreDDI.CafeteriaAPP.service.RefrescoService;
 
 @Controller
@@ -22,6 +26,9 @@ public class RefrescoController {
 
 	@Autowired
 	RefrescoService refrescoService;
+
+	@Autowired
+	BebidaService bebidaService;
 
 	@RequestMapping("/insertRefresco")
 	public String insertRefrescoForm(Model model) {
@@ -71,5 +78,23 @@ public class RefrescoController {
 		return "refresco/listarRefresco";
 
 	}
+
+	@RequestMapping("/borrarRefresco/{id}")
+    public String borrarRefresco(@PathVariable("id") int id) {
+		Refresco refresco = refrescoService.getRefrescoById(id).orElseThrow();
+		List<Bebida> bebidas = bebidaService.searchBebidaByRefersco(refresco);
+		for (Bebida bebida : bebidas) {
+			bebidaService.deleteBebida(bebida.getId());
+		}
+		refrescoService.deleteRefresco(id);
+        return "redirect:/mostrar-refrescos";
+    }
+	
+	@RequestMapping("/editRefresco/{id}")
+    public String editRefresco(@PathVariable("id") int id, Model model) {
+		Optional<Refresco> refresco = refrescoService.getRefrescoById(id);
+		model.addAttribute("refresconuevo", refresco);
+        return "refresco/resfrescoForm";
+    }
 
 }

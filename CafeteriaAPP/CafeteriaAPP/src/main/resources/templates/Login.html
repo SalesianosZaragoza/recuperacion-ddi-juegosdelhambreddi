@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="css/style.css">
     <style>
         .container {
             display: flex;
@@ -30,19 +32,19 @@
         <!-- Entrada email-->
         <div class="form-group">
 			<label class="form-label" for="email">Email address</label>
-            <input type="email" id="email" th:field="*{email}" class="form-control" />     
+            <input type="email" id="email" th:field="*{email}" class="form-control" required />     
         </div>
         <!-- Entrada password -->
         <div class="form-group">
             <label class="form-label" for="password">Password</label>
-            <input type="password" id="password" th:field="*{password}" class="form-control">
+            <input type="password" id="password" th:field="*{password}" class="form-control" required>
         </div>    
         <div class="row mb-4">
             <div class="col d-flex justify-content-center">
                 <!-- Checkbox -->
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="rememberMe" checked />
-                    <label class="form-check-label" for="rememberMe"> Remember me </label>
+                    <input class="form-check-input" type="checkbox"  th:field="*{esCliente}" id="rememberMe" checked />
+                    <label class="form-check-label" for="rememberMe"> Allow cookies </label>
                 </div>
             </div>
 
@@ -56,7 +58,7 @@
 
         <!-- Register buttons -->
         <div class="text-center">
-            <p>Not a member? <a th:href="/Register">Register</a></p>
+            <p>Not a member? <a href="/Register">Register</a></p>
         </div>
     </form>
 </div>

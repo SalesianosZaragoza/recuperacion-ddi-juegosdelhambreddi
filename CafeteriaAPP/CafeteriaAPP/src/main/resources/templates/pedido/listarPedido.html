@@ -7,7 +7,7 @@
     <link rel="icono" href="CafeteriaAPP/CafeteriaAPP/src/main/resources/static/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
 		 footer {
@@ -55,6 +55,11 @@
             <a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
         </li>
     </ul>
+
+    <!-- <div class="m-4 btn-info"><a th:href="@{/insertPedido}" class="btn btn-outline-primary">Insertar Pedido</a></div> -->
+	<div class="btn btn-outline-info m-4"><a th:href="@{insertPedido}" class="btn btn-outline-primary">Insertar Pedido</a></div>
+
+
     <table class="table table-bordered table-rounded  table-light table-striped table-hover" 
                 style="display: table; margin:auto; margin-top:10px;width: 50%; ">
     <thead style="background-color: blue;">
@@ -79,15 +84,16 @@
                 <td th:text="${consumicion.bebida.refresco != null ? consumicion.bebida.refresco.nomRefresco : 'Sin Refresco'}"/>
                 <td th:text="${consumicion.comida != null ? consumicion.comida.nomComida : 'Sin Comida'}"/>
                 <td th:text="${consumicion.cantidadComida != 0 ? consumicion.cantidadComida : 'Sin Comida'}"></td>
-                <td th:text="${consumicion.cantidadBebida != 0 ? consumicion.cantidadBebidda : 'Sin Bebida'}"></td>
-                <td><a th:href="@{'/deletePedido/'+${pedido.numPedido}}" class="btn btn-danger btn-sm">Delete Pedido</a></td>
-                <td><a th:href="@{'/updatePedido/'+${pedido.numPedido}}" class="btn btn-primary btn-sm">Update Pedido</a></td>
+                <td th:text="${consumicion.cantidadBebida != 0 ? consumicion.cantidadBebida : 'Sin Bebida'}"></td>
+                <td><a th:href="@{'/borrarPedido/'+${pedido.numPedido}}" class="btn btn-danger btn-sm">Delete Pedido</a></td>
+                <td><a th:href="@{'/editPedido/'+${pedido.numPedido}}" class="btn btn-primary btn-sm">Update Pedido</a></td>
                 <!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
             </tr> 
         </tbody>
     </table>
     <article><a th:href="@{/consumicion/add}" class="btn btn-primary btn-sm">Insertar Consumición</a></article>
-    <article><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}" class="btn btn-danger btn-sm">Delete Consumicion</a></article>
+    
+    <!-- <article><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}" class="btn btn-danger btn-sm">Delete Consumicion</a></article> -->
     <footer>
     <div class="container">
         <a href="/../" class="btn btn-secondary">Volver al indice</a>

@@ -12,11 +12,10 @@
     function confirmarBorrar(cafeId) {
 		// alert('CafeId: ' + cafeId);
         if (confirm('¿Estás seguro de que deseas borrar esta Comida?')) {
-            // Redirige al controlador de confirmación con el ID del café
-            window.location.href = '/borrarCafe?cafeId=' + cafeId;
+            window.location.href = '/borrarCafe/' + cafeId;
 			cafeId = 0;
         } else {
-            // No hacer nada o realizar alguna acción adicional
+            alert('No se pudo borrar CafeId: ' + cafeId);
         }
     }
 </script>
@@ -45,7 +44,7 @@
 			<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
 		</li>
 	</ul>
-	<h1>Los Cafes</h1>
+	<!-- <h1>Los Cafes</h1>
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<th>ID</th>
@@ -59,9 +58,7 @@
 				<td th:text="${cafe.id}"/>
 				<td th:text="${cafe.nomcafe}"/>
 				<td th:text="${cafe.precio}"/>
-				<!--td>
-					<a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a>
-				</td-->
+				
 				<td>
 					<a th:href="@{insertCafe}">Update Cafe</a>
 					<a th:href="@{borrarCafe}">borrar Cafe</a>
@@ -72,15 +69,14 @@
 					<img th:src="@{/ImagenesCafes/__${nombreImagen}__}"
 							alt="Cafes" width="100" height="100">
 				</td>
-						<!-- th:src="@{/ImagenesCafes/${ #strings.equals(__${cafe.nomcafe}__ + '.jpg', __${nombreImagen}__) ? __${nombreImagen}__ : __${nombreImagen}__ }}" -->
-						<!-- th:if="${nombreImagen == cafe.nomcafe + '.jpg'} ? ${nombreImagen} : null"
- --><!-- <td><a th:href="@{'/deletecafe/'+${cafe.id}}">Delete</a></td> -->
 			</tr>
 		</tbody>
-	</table>
+	</table> -->
+	<!-- th:src="@{/ImagenesCafes/${ #strings.equals(__${cafe.nomcafe}__ + '.jpg', __${nombreImagen}__) ? __${nombreImagen}__ : __${nombreImagen}__ }}" -->
 	<br>
 	<br>
 	<h1>Los Cafes</h1>
+		<div class="btn btn-outline-info"><a th:href="@{cafeForm}" class="btn btn-primary">Insertar Cafe</a></div>
 		<div class="container mb-5">
 			<div class="row">
 				<div th:each="cafe: ${cafes}" class="col-md-4">
@@ -98,8 +94,8 @@
 						</div>
 						<div class="card-footer">
 							<small class="text-muted">OPTIONS</small><br>
-							<a th:href="@{insertCafe}" class="btn btn-primary">Insertar Cafe</a>
-							<!-- <a th:href="@{borrarCafe}" class="btn btn-primary">Insertar Cafe</a> -->
+							<a th:href="@{'/editCafe/'+${cafe.id}}" class="btn btn-primary">Update Cafe</a>
+							<!-- <a th:href="@{insertCafe}" class="btn btn-primary">Insertar Cafe</a> -->
 							<button class="btn btn-danger" th:onclick="'confirmarBorrar(\'' + ${cafe.id} + '\')'">Eliminar</button>
 						</div>
 					</div>

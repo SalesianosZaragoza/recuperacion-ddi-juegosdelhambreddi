@@ -1,10 +1,6 @@
 package JuegosdelhambreDDI.CafeteriaAPP.model;
 
-import java.util.Collection;
-import java.util.Collections;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.hibernate.annotations.ColumnDefault;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,12 +21,17 @@ public class Usuario {
     private String password;
 	@Column(name = "email")
 	private String email;
-    
+    @Column(name = "esCliente")
+	@ColumnDefault("false")
+	private Boolean esCliente;
+	@Column(name = "esLogin")
+	@ColumnDefault("false")
+	private Boolean esLogin;
     // Constructor, getters, and setters
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
-    }
+    // public Collection<? extends GrantedAuthority> getAuthorities() {
+    //     return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+    // }
 
 	/*Genera todos los getter y setter */
 	public Long getId() {
@@ -56,7 +57,7 @@ public class Usuario {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	@Column(name="password", nullable=false, length=50)
+	// @Column(name="password", nullable=false, length=50)
 	public String getPassword() {
 		return password;
 	}
@@ -70,5 +71,21 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getEsCliente() {
+        return esCliente;
+    }
+
+    public void setEsCliente(Boolean esCliente) {
+        this.esCliente = esCliente;
+    }
+
+    public Boolean getEsLogin() {
+        return esLogin;
+    }
+
+    public void setEsLogin(Boolean esLogin) {
+        this.esLogin = esLogin;
     }
 }

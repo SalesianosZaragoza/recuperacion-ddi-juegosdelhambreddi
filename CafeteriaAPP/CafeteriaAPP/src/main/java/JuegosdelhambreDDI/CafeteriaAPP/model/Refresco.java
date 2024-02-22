@@ -18,7 +18,7 @@ public class Refresco {
     @SequenceGenerator(
         name = "refresco_sequence",
         sequenceName = "refresco_sequence",
-        initialValue = 7,
+        initialValue = 9,
         allocationSize = 1
     )
     private Integer id;

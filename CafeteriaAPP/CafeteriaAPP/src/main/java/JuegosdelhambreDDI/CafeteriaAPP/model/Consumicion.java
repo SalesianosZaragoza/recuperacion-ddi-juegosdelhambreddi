@@ -94,11 +94,11 @@ public void setId(Integer id) {
     }   
 
 
-    public int getcantidadBebida() {
+    public int getCantidadBebida() {
         return cantidadBebida;
     }
 
-    public void setcantidadBebida(int cantidad_bebida) {
+    public void setCantidadBebida(int cantidad_bebida) {
         this.cantidadBebida = cantidad_bebida;
     }
 

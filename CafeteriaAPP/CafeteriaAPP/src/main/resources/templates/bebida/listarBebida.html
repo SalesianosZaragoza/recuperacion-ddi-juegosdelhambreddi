@@ -25,7 +25,7 @@
 		// alert('comidaId: ' + comidaId);
         if (confirm('¿Estás seguro de que deseas borrar este café?')) {
             // Redirige al controlador de confirmación con el ID del café
-            window.location.href = '/borrarBebida?bebidaId=' + bebidaId;
+            window.location.href = '/borrarBebida/' + bebidaId;
         } else {
             // No hacer nada o realizar alguna acción adicional
         }
@@ -48,7 +48,7 @@
 				<a class="nav-link" th:href="@{listarCafe}">Cafe</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" th:href="@{listarCafe}">Refresco</a>
+				<a class="nav-link" th:href="@{listarRefresco}">Refresco</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" th:href="@{consumicion}">Consumicion</a>
@@ -61,6 +61,7 @@
 <form method="post" th:action="@{/CrearBebidaByDefault}" id="boton" onload="ocultarBoton('${bebidas.length}')">
     <button type="submit" class="btn btn-warning" onload="ocultarBoton('${bebidas.length}')">Cargar Bebidas Por Defecto</button>
 </form>
+<div class="btn btn-outline-info m-4"><a th:href="@{insertBebida}" class="btn btn-outline-primary">Insertar bebida</a></div>
 <!-- <button class="btn btn-warning" th:onclick="@{|@{/CrearBebidaByDefault}|}">Cargar Bebidas Por Defecto</button> -->
 	<div class="container" id="container">
         <div class="row">
@@ -79,13 +80,13 @@
                         <h5 class="card-title" 
 							th:text="${ #strings.equals(bebida.cafe.nomcafe, 'nulo') ? bebida.refresco.nomRefresco : bebida.cafe.nomcafe}"> 
 						</h5>				
-                        	<p class="card-text" th:if="not ${bebida.cafe.precio==0}">
-                            	Precio: <span th:text="${bebida.cafe.precio}"></span><br>
-                        	</p>
+						<p class="card-text" th:if="not ${bebida.cafe.precio==0}">
+							Precio: <span th:text="${bebida.cafe.precio}"></span><br>
+						</p>
                     </div>
 					<div class="card-footer">
 						<small class="text-muted">Opciones</small><br>
-						<a th:href="@{insertBebida}" class="btn btn-primary">Insertar Bebida</a>
+						<a th:href="@{'/editBebida/'+${bebida.id}}" class="btn btn-primary">Actualizar Bebida</a>
 						<button class="btn btn-danger" th:onclick="'confirmarBorrar(\'' + ${bebida.id} + '\')'">Eliminar</button>
 					</div>
                 </div>

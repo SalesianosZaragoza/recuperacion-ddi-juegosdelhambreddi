@@ -21,15 +21,20 @@
             padding: 0 20px;
         }
     table{
-		border:1px; 
+		border:2px; 
 		display: table; 
 		margin:auto; 
 		margin-top:75px; 
-		max-width:50%;
-		border-collapse: collapse;			
+		max-width:70%;
+		/* border-collapse: collapse;	 */
+		margin-bottom: 450px;		
+		padding-bottom: 200px;
 	 }
 	 thead{
 		 background-color: blue;
+	 }
+	 td,th{
+		padding: 15px;
 	 }
 	.card {
 		margin: 20px;

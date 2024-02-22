@@ -1,0 +1,51 @@
+	body {
+		font-family: 'JetBrains Mono', monospace;
+	}
+	footer {
+            background-color: blue;
+            color: white;
+            padding: 5px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+    }
+    .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+	h1 {
+		text-align: left;
+		margin-top: 20px;
+		font-family: Algerian, Arial, sans-serif;
+		background-color: blue;
+        color: white;
+        padding: 5px 50;
+        bottom: 0;
+        width: 100%;
+	}
+
+	.card {
+		margin: 20px;
+		width: 300px;
+		height: 400px;
+	}
+
+	img {
+		max-width: 150px;
+		max-height: 200px;
+		object-fit: scale-down;
+	}
+	button:hover {
+		cursor: pointer;
+	}
+	a:active,button:active {
+		cursor: wait;
+	}
+	.card-header {
+		height: 300px; 
+		overflow: hidden;
+	}

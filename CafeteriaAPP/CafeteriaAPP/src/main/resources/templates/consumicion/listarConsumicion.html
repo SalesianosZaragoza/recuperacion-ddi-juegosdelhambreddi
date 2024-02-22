@@ -25,6 +25,7 @@
 
 </style>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/css/style.css">
 <title>Las Consumiciones</title>
 </head>
 <body>
@@ -56,11 +57,12 @@
 	<h1 class="m-5"><a th:href="@{/consumicion/add}" class="btn btn-outline-info">Insertar Consumicion</a></h1>
 
 
-	<table border="1px" style="display: table; margin:auto; margin-top:200px; width: 50%;border-collapse: collapse;">
+	<table border="1px" style="display: table; margin:auto; margin-top:70px;margin-bottom:170px;border-collapse: collapse;">
 	<thead style="background-color: blue;">
 			<th>Nombre</th>
 			<th>Precio</th>
 			<th>Bebida</th>
+			<th>Comida</th>
 			<th>Cantidad Bebida</th>
 			<th>Cantidad Comida</th>
 			<!-- <th>Refresco</th> -->
@@ -76,7 +78,7 @@
 				<td th:text="${consumicion.cantidadComida}"/>
 				<!--<td><a th:href="@{'/updateCafe/'+${cafe.id}}">Update</a></td> -->
 				<td><a th:href="@{'/consumicion/update/'+${consumicion.id}}">Actualizar Consumicion</a></td>
-				<td><a th:href="@{'/deleteconsumicion/'+${consumicion.id}}">Delete</a></td>
+				<td><a th:href="@{'/consumicion/delete/'+${consumicion.id}}">Delete</a></td>
 			</tr>
 		</tbody>
 	</table>

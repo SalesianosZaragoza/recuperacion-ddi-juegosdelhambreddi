@@ -1,10 +1,12 @@
 package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Consumicion;
@@ -65,5 +67,22 @@ public class PedidoController {
         
 
         return "pedido/listarPedido";
+    }
+
+    @RequestMapping("/borrarPedido/{id}")
+	public String borrarPedido(@PathVariable("id") int id, Model model) {
+		pedidoService.deletePedido(id);
+		return "redirect:/listarPedido";
+	}
+
+	@RequestMapping("/editPedido/{id}")
+    public String editPedido(@PathVariable("id") int id, Model model) {
+		Optional<Pedido> pedido = pedidoService.getPedidoById(id);
+		model.addAttribute("pedidoNuevo", pedido);
+        Iterable<Usuario> usuarios = usuarioService.getAllUsuario();
+        model.addAttribute("usuarios", usuarios);
+        Iterable<Consumicion> consumiciones = consumicionService.getAllConsumiciones();
+        model.addAttribute("consumiciones", consumiciones);
+        return "pedido/pedidoForm";
     }
 }

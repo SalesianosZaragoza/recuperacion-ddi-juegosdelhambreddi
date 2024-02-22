@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/css/style.css">
 <title>Insert Comida</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
 			<a class="nav-link" th:href="@{listarPedido}">Pedidos</a>
 		</li>
 	</ul>
-	<form th:action="@{crearComidaNueva}" th:object="${comidaNueva}" >
+	<form th:action="@{/crearComidaNueva}" th:object="${comidaNueva}" >
 		<label for="id" style="display: none;">ID:</label>
 		<input type="number" id="id"  th:field="*{id}" style="display: none;"><br><br>
 		<label for="nomComida">Nombre de la Comida:</label>

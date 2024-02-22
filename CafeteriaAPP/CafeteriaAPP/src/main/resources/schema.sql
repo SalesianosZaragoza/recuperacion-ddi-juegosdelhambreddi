@@ -85,7 +85,7 @@ CREATE TABLE usuario (
 );
 
 -- Creación de secuencias
-CREATE SEQUENCE cafe_seq START WITH 1 INCREMENT BY 50;
+CREATE SEQUENCE cafe_seq START WITH 70 INCREMENT BY 50;
 CREATE SEQUENCE primary_sequence START WITH 70 INCREMENT BY 50;
 
 -- Añadir restricciones de clave externa

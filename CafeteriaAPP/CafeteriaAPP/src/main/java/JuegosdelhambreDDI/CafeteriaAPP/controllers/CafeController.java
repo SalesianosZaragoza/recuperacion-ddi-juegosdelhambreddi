@@ -3,15 +3,18 @@ package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import JuegosdelhambreDDI.CafeteriaAPP.model.Bebida;
 import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
+import JuegosdelhambreDDI.CafeteriaAPP.service.BebidaService;
 import JuegosdelhambreDDI.CafeteriaAPP.service.CafeService;
 
 @Controller
@@ -20,6 +23,9 @@ public class CafeController {
 
     @Autowired
 	CafeService cafeService;
+
+	@Autowired
+	BebidaService bebidaService;
     
 	@RequestMapping("/cafeForm")
 	public String insertCafeForm(Model model) {
@@ -38,39 +44,51 @@ public class CafeController {
         return this.mostrarCafes(model);
     }
 
-	@RequestMapping("/cafeDeleteForm")
-	public String cafeDeleteForm(Model model) {
-
-		model.addAttribute("cafeBorrado", new Cafe());
-		return "cafe/cafeBorrarForm";
-	}
-
-	@RequestMapping("/borrarCafe")
-    public String borrarCafe(@RequestParam int cafeId, Model model) {
-		cafeService.deleteCafe(cafeId);
-
-		// List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
-        // model.addAttribute("cafes", lista);
-
-        return this.mostrarCafes(model);
+	@RequestMapping("/borrarCafe/{id}")// /borrarCafe/{id}
+    public String borrarCafe(@PathVariable("id") int id) {
+		Cafe cafe = cafeService.getCafeById(id).orElseThrow();
+		List<Bebida> bebidas = bebidaService.searchBebidaByCafe(cafe);
+		for (Bebida bebida : bebidas) {
+			bebidaService.deleteBebida(bebida.getId());
+		}
+        cafeService.deleteCafe(id);
+        return "redirect:/mostrar-cafe";
     }
 
-	@RequestMapping("/cafeUpdateForm")
-	public String cafeUpdateForm(Model model) {
-
-		model.addAttribute("cafeActualizado", new Cafe());
-		return "cafe/cafeForm";
-	}
-
-	@RequestMapping("/editCafe")
-    public String editCafe(Cafe cafeActualizado, Model model) {
-		cafeService.addCafe(cafeActualizado);
-
-		// List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
-        // model.addAttribute("cafes", lista);
-
-        return this.mostrarCafes(model);
+	@RequestMapping("/editCafe/{id}")
+    public String editCafe(@PathVariable("id") int id, Model model) {
+        Optional<Cafe> cafe = cafeService.getCafeById(id);
+        model.addAttribute("cafeCreado", cafe);
+        return "cafe/cafeForm";
     }
+
+    
+
+	// @RequestMapping("/borrarCafe")
+    // public String borrarCafe(@RequestParam int cafeId, Model model) {
+	// 	cafeService.deleteCafe(cafeId);
+
+	// 	// List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
+    //     // model.addAttribute("cafes", lista);
+
+    //     return this.mostrarCafes(model);
+    // }
+	// @RequestMapping("/cafeUpdateForm")
+	// public String cafeUpdateForm(Model model) {
+
+	// 	model.addAttribute("cafeActualizado", new Cafe());
+	// 	return "cafe/cafeForm";
+	// }
+
+	// @RequestMapping("/editCafe")
+    // public String editCafe(Cafe cafeActualizado, Model model) {
+	// 	cafeService.addCafe(cafeActualizado);
+
+	// 	// List<Cafe> lista = (List<Cafe>) cafeService.getAllCafes();
+    //     // model.addAttribute("cafes", lista);
+
+    //     return this.mostrarCafes(model);
+    // }
 
     
 	@RequestMapping("/listarCafe")

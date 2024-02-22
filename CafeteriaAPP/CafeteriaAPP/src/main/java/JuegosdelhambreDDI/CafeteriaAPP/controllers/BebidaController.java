@@ -2,13 +2,14 @@ package JuegosdelhambreDDI.CafeteriaAPP.controllers;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import JuegosdelhambreDDI.CafeteriaAPP.model.Bebida;
 import JuegosdelhambreDDI.CafeteriaAPP.model.Cafe;
@@ -86,12 +87,27 @@ public class BebidaController {
 		}
 		return this.listarBebida(model);
 	}
-
-	@RequestMapping("/borrarBebida")
-	public String borrarBebida(@RequestParam int bebidaId, Model model) {
-		bebidaService.deleteBebida(bebidaId);
-
-		return this.listarBebida(model);
-	}
     
+	@RequestMapping("/borrarBebida/{id}") // /borrarBebida/{id}
+    public String borrarBebida(@PathVariable("id") int id) {
+		bebidaService.deleteBebida(id);
+        return "redirect:/listarBebida";
+    }
+	
+	@RequestMapping("/editBebida/{id}")
+    public String editBebida(@PathVariable("id") int id, Model model) {
+		Optional<Bebida> bebida = bebidaService.getBebidaById(id);
+        model.addAttribute("bebidaNueva", bebida);
+		Iterable<Cafe> lista = cafeService.getAllCafes();
+		model.addAttribute("cafes", lista);
+		Iterable<Refresco> listaRefresco = refrescoService.getAllRefrescos();
+		model.addAttribute("refrescos", listaRefresco);
+        return "bebida/bebidaForm";
+    }
+
+	// @RequestMapping("/borrarBebida")
+	// public String borrarBebida(@RequestParam int bebidaId, Model model) {
+	// 	bebidaService.deleteBebida(bebidaId);
+	// 	return this.listarBebida(model);
+	// }
 }
