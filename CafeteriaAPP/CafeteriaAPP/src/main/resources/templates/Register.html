@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .frame-container {
+            border: 1mm solid blue;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .cafe-title {
+            font-size: 2em;
+            color: rgb(0, 0, 255);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container">
+		<h1 class="cafe-title">Cafetería Salesianos</h1> 
+        <div class="frame-container">
+			      
+            <form class="text-center">
+                <!-- Nombre input -->
+                <div class="form-group">
+                    <label class="form-label" for="form2Example1">Nombre</label>
+                    <input type="text" id="form2Example1" class="form-control" />
+                </div>
+                <!-- Apellidos input -->
+                <div class="form-group">
+                    <label class="form-label" for="form2Example2">Apellidos</label>
+                    <input type="text" id="form2Example2" class="form-control" />
+                </div>
+                <!-- Email input -->
+                <div class="form-group">
+                    <label class="form-label" for="form2Example3">Email address</label>
+                    <input type="email" id="form2Example3" class="form-control" />
+                </div>
+
+                <!-- Password input -->
+                <div class="form-group">
+                    <label class="form-label" for="form2Example4">Password</label>
+                    <input type="password" id="form2Example4" class="form-control" />
+                </div>
+
+                <!-- Select input para el id de trabajador o de cliente -->
+                <div class="form-group">
+                    <label class="form-label" for="form2Example5">Seleccionar Rol</label>
+                    <select id="form2Example5" class="form-control">
+                        <option value="trabajador">Trabajador</option>
+                        <option value="cliente">Cliente</option>
+                    </select>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col d-flex justify-content-center">
+                        <!-- Checkbox -->                      
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
